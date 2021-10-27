@@ -6,50 +6,416 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1187</width>
-    <height>619</height>
+    <width>1473</width>
+    <height>729</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QWidget" name="widget" native="true">
-      <widget class="SCustomPlot" name="custom1" native="true">
-       <property name="geometry">
-        <rect>
-         <x>400</x>
-         <y>10</y>
-         <width>431</width>
-         <height>491</height>
-        </rect>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>220</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>10</y>
+      <width>1261</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
+    <widget class="QWidget" name="page">
+     <widget class="ACustomPlot" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>1251</width>
+        <height>631</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QSplitter" name="splitter_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>1241</width>
+        <height>661</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="ACustomPlot" name="widget_6" native="true"/>
+      <widget class="BCustomPlot" name="widget_3" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_3">
+     <widget class="QSplitter" name="splitter">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1221</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="BCustomPlot" name="widget_2" native="true"/>
+      <widget class="ACustomPlot" name="widget_4" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_4">
+     <widget class="SCustomPlot" name="widget_5" native="true">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>1221</width>
+        <height>631</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_5">
+     <widget class="QSplitter" name="splitter_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>1211</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="SCustomPlot" name="widget_7" native="true"/>
+      <widget class="ACustomPlot" name="widget_8" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_6">
+     <widget class="QSplitter" name="splitter_4">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>10</y>
+        <width>1201</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="SCustomPlot" name="widget_9" native="true"/>
+      <widget class="ACustomPlot" name="widget_10" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_7">
+     <widget class="QSplitter" name="splitter_5">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>10</y>
+        <width>1161</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="SCustomPlot" name="widget_11" native="true"/>
+      <widget class="ACustomPlot" name="widget_12" native="true"/>
+      <widget class="BCustomPlot" name="widget_13" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_8">
+     <widget class="QSplitter" name="splitter_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>1221</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="SCustomPlot" name="widget_14" native="true"/>
+      <widget class="ACustomPlot" name="widget_15" native="true"/>
+      <widget class="CCustomPlot" name="widget_16" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_9">
+     <widget class="QSplitter" name="splitter_8">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>1181</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_7">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
+       <widget class="SCustomPlot" name="widget_17" native="true"/>
+       <widget class="BCustomPlot" name="widget_18" native="true"/>
       </widget>
-      <widget class="ACustomPlot" name="custom2" native="true">
-       <property name="geometry">
-        <rect>
-         <x>830</x>
-         <y>10</y>
-         <width>471</width>
-         <height>491</height>
-        </rect>
+      <widget class="ACustomPlot" name="widget_19" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_10">
+     <widget class="QSplitter" name="splitter_10">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>1171</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_9">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
+       <widget class="SCustomPlot" name="widget_20" native="true"/>
+       <widget class="ACustomPlot" name="widget_21" native="true"/>
       </widget>
-      <widget class="BCustomPlot" name="custom3" native="true">
-       <property name="geometry">
-        <rect>
-         <x>11</x>
-         <y>11</y>
-         <width>391</width>
-         <height>491</height>
-        </rect>
+      <widget class="BCustomPlot" name="widget_22" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_11">
+     <widget class="QSplitter" name="splitter_12">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>10</y>
+        <width>1151</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_11">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
+       <widget class="SCustomPlot" name="widget_23" native="true"/>
+       <widget class="BCustomPlot" name="widget_24" native="true"/>
+       <widget class="CCustomPlot" name="widget_25" native="true"/>
+      </widget>
+      <widget class="ACustomPlot" name="widget_26" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_12">
+     <widget class="QSplitter" name="splitter_15">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>10</y>
+        <width>1141</width>
+        <height>581</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_14">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="SCustomPlot" name="widget_29" native="true"/>
+       <widget class="QSplitter" name="splitter_13">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="ACustomPlot" name="widget_27" native="true"/>
+        <widget class="BCustomPlot" name="widget_28" native="true"/>
+       </widget>
+      </widget>
+      <widget class="CCustomPlot" name="widget_30" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_13">
+     <widget class="QSplitter" name="splitter_17">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>0</y>
+        <width>1201</width>
+        <height>611</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_16">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="SCustomPlot" name="widget_31" native="true"/>
+       <widget class="ACustomPlot" name="widget_32" native="true"/>
+       <widget class="BCustomPlot" name="widget_33" native="true"/>
+      </widget>
+      <widget class="CCustomPlot" name="widget_34" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_14">
+     <widget class="QSplitter" name="splitter_19">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>1181</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_18">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="SCustomPlot" name="widget_35" native="true"/>
+       <widget class="CCustomPlot" name="widget_36" native="true"/>
+      </widget>
+      <widget class="ACustomPlot" name="widget_37" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_15">
+     <widget class="QSplitter" name="splitter_21">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>0</y>
+        <width>1201</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_20">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="SCustomPlot" name="widget_38" native="true"/>
+       <widget class="ACustomPlot" name="widget_39" native="true"/>
+      </widget>
+      <widget class="CCustomPlot" name="widget_40" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_19">
+     <widget class="QSplitter" name="splitter_30">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>0</y>
+        <width>1211</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_29">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="SCustomPlot" name="widget_53" native="true"/>
+       <widget class="CCustomPlot" name="widget_54" native="true"/>
+       <widget class="TopcCustomPlot" name="widget_55" native="true"/>
+      </widget>
+      <widget class="ACustomPlot" name="widget_56" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_16">
+     <widget class="QSplitter" name="splitter_24">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>0</y>
+        <width>1191</width>
+        <height>621</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_22">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="CCustomPlot" name="widget_41" native="true"/>
+       <widget class="CCustomPlot" name="widget_42" native="true"/>
+       <widget class="CCustomPlot" name="widget_43" native="true"/>
+      </widget>
+      <widget class="QSplitter" name="splitter_23">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="ACustomPlot" name="widget_44" native="true"/>
+       <widget class="SCustomPlot" name="widget_45" native="true"/>
       </widget>
      </widget>
-    </item>
-   </layout>
+    </widget>
+    <widget class="QWidget" name="page_17">
+     <widget class="QSplitter" name="splitter_26">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>0</y>
+        <width>1081</width>
+        <height>651</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitter_25">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="SCustomPlot" name="widget_46" native="true"/>
+       <widget class="ACustomPlot" name="widget_47" native="true"/>
+      </widget>
+      <widget class="CCustomPlot" name="widget_48" native="true"/>
+      <widget class="BCustomPlot" name="widget_49" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_20"/>
+   </widget>
   </widget>
  </widget>
  <customwidgets>
@@ -69,6 +435,18 @@
    <class>BCustomPlot</class>
    <extends>QWidget</extends>
    <header>bcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>ccustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>TopcCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>topccustomplot.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
