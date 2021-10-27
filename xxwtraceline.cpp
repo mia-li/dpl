@@ -1,9 +1,10 @@
 #include "xxwtraceline.h"
 
-XxwTraceLine::XxwTraceLine(QCustomPlot *_plot,LineType _type,QColor _color, double size, QObject *parent)
+XxwTraceLine::XxwTraceLine(QCustomPlot *_plot,LineType _type,QColor _color,QPen _pen,double size, QObject *parent)
     : QObject(parent),
       m_type(_type),
       m_color(_color),
+      m_pen(_pen),
       m_size(size),
       m_plot(_plot)
 {
@@ -106,12 +107,14 @@ void XxwTraceLine::initLine()
             m_labelx->setPen(linesPen);//设置游标说明颜色
     //        m_labelx->setBrush(QBrush(Qt::gray));
             m_labelx->setPositionAlignment(Qt::AlignTop|Qt::AlignLeft);//文字布局：顶、左对齐
+            m_labelx->setText("");
 
             m_labely = new QCPItemText(m_plot); //生成游标说明
             m_labely->setLayer("overlay");//设置图层为overlay，因为需要频繁刷新
             m_labely->setPen(linesPen);//设置游标说明颜色
     //        m_labely->setBrush(QBrush(Qt::gray));
             m_labely->setPositionAlignment(Qt::AlignTop|Qt::AlignLeft);//文字布局：顶、左对齐
+            m_labely->setText("");
         }
         else if(ShortLine==m_type)
         {
@@ -156,17 +159,19 @@ void XxwTraceLine::initLine()
             m_labelx->setPen(linesPen);//设置游标说明颜色
     //        m_labelx->setBrush(QBrush(Qt::gray));
             m_labelx->setPositionAlignment(Qt::AlignTop|Qt::AlignLeft);//文字布局：顶、左对齐
+            m_labelx->setText("");
 
             m_labely = new QCPItemText(m_plot); //生成游标说明
             m_labely->setLayer("overlay");//设置图层为overlay，因为需要频繁刷新
             m_labely->setPen(linesPen);//设置游标说明颜色
     //        m_labely->setBrush(QBrush(Qt::gray));
             m_labely->setPositionAlignment(Qt::AlignTop|Qt::AlignLeft);//文字布局：顶、左对齐
+            m_labely->setText("");
 
             m_labelx1 = new QCPItemText(m_plot); //线段旁边的游标说明
             m_labelx1->setLayer("overlay");//设置图层为overlay，因为需要频繁刷新
             m_labelx1->setPositionAlignment(Qt::AlignTop|Qt::AlignLeft);//文字布局：顶、左对齐
-
+            m_labelx1->setText("");
         }
         else if(Line==m_type)
         {
@@ -174,7 +179,7 @@ void XxwTraceLine::initLine()
             m_yValue=0;
             m_lineV = new QCPItemStraightLine(m_plot);//垂直线
             m_lineV->setLayer("overlay");
-            m_lineV->setPen(QPen(Qt::red, 2, Qt::SolidLine));
+            m_lineV->setPen(m_pen);
             m_lineV->setClipToAxisRect(true);
             m_lineV->point1->setCoords(0, m_plot->yAxis->range().lower);
             m_lineV->point2->setCoords(0, m_plot->yAxis->range().upper);
@@ -304,9 +309,10 @@ void XxwTraceLine::updatePositionX(float xValue)
 }
 void XxwTraceLine::updatePositionY(float yValue)
 {
-    m_yValue=yValue+m_size/2.0;
+
     if(Crosshair == m_type)
     {
+        m_yValue=yValue;
         m_lineH->point1->setCoords(m_plot->xAxis->range().lower, yValue);
         m_lineH->point2->setCoords(m_plot->xAxis->range().upper, yValue);
 
@@ -315,6 +321,7 @@ void XxwTraceLine::updatePositionY(float yValue)
     }
     else if(ShortLine==m_type)
     {
+        m_yValue=yValue+m_size/2.0;
         m_lineH->point1->setCoords(m_plot->xAxis->range().lower, m_yValue-m_size/2.0); //水平线
         m_lineH->point2->setCoords(m_plot->xAxis->range().upper, m_yValue-m_size/2.0);
 
@@ -337,6 +344,7 @@ void XxwTraceLine::updatePositionY(float yValue)
     }
     else if(DashLine==m_type)
     {
+        m_yValue=yValue+m_size/2.0;
         m_lineH->point1->setCoords(m_plot->xAxis->range().lower, m_yValue-m_size/2.0); //水平线
         m_lineH->point2->setCoords(m_plot->xAxis->range().upper, m_yValue-m_size/2.0);
 

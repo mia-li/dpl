@@ -16204,12 +16204,13 @@ void QCPColorGradient::loadPreset(GradientPreset preset)
       break;
     case gpThermal:
       setColorInterpolation(ciRGB);
-      setColorStopAt(0, QColor(0, 0, 50));
+      setColorStopAt(0, QColor(255, 255, 255));
       setColorStopAt(0.15, QColor(20, 0, 120));
       setColorStopAt(0.33, QColor(200, 30, 140));
       setColorStopAt(0.6, QColor(255, 100, 0));
       setColorStopAt(0.85, QColor(255, 255, 40));
-      setColorStopAt(1, QColor(255, 255, 255));
+      setColorStopAt(1, QColor(0, 0, 50));
+
       break;
     case gpPolar:
       setColorInterpolation(ciRGB);

@@ -28,10 +28,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->custom1, &SCustomPlot::SetShortLineVis, (ui->custom2), &ACustomPlot::SetShortLineVisEvent);
     connect(ui->custom3, &BCustomPlot::SetShortLineVis, (ui->custom2), &ACustomPlot::SetShortLineVisEvent);
-//    connect(ui->custom1, &ThCustomPlot::ChangelineTracer, (ui->custom2), &ThCustomPlot::OthersMouseEvent);
-
-//    connect(ui->custom2, &ThCustomPlot::ChangelineTracer, (ui->custom1), &ThCustomPlot::OthersMouseEvent);
-//    connect(ui->custom2, &ThCustomPlot::ChangelineTracer, (ui->custom1), &ThCustomPlot::OthersMouseEvent);
 
 }
 void MainWindow::Initial()

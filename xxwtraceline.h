@@ -16,7 +16,7 @@ public:
         Line, //左边的直线
         DashLine //双虚线
     };
-    explicit XxwTraceLine(QCustomPlot *_plot, LineType _type = Crosshair,QColor _color=Qt::red,double size=20, QObject *parent = Q_NULLPTR);
+    explicit XxwTraceLine(QCustomPlot *_plot, LineType _type = Crosshair,QColor _color=Qt::red,QPen _pen=QPen(Qt::red,2,Qt::SolidLine),double size=10, QObject *parent = Q_NULLPTR);
     ~XxwTraceLine();
     void initLine();
     void updatePosition(float xValue, float yValue);
@@ -38,9 +38,9 @@ protected:
     float m_xValue;
     float m_yValue;
 
-
     LineType m_type;//类型
     QColor m_color;
+    QPen m_pen;
     QCustomPlot *m_plot;//图表
     QCPItemStraightLine *m_lineV; //垂直线
     QCPItemStraightLine *m_lineH; //水平线

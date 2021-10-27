@@ -16,14 +16,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    acustomplot.cpp \
+    bcustomplot.cpp \
+    ccustomplot.cpp \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp \
+    scustomplot.cpp \
+    topccustomplot.cpp \
     xxwtraceline.cpp
 
 HEADERS += \
+    acustomplot.h \
+    bcustomplot.h \
+    ccustomplot.h \
     mainwindow.h \
     qcustomplot.h \
+    scustomplot.h \
+    topccustomplot.h \
     xxwtraceline.h
 
 FORMS += \

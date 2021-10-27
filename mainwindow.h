@@ -27,18 +27,8 @@ public:
     XxwTraceLine* m_lineLStLineTracer;
 
 private slots:
-    void LmouseDoubleClick(QMouseEvent* e);
-    void myLMousePressEvent(QMouseEvent *e);
-    void myLMouseReleaseEvent(QMouseEvent *e);
-    void myLMouseMoveEvent(QMouseEvent *e);
-
-    void RmouseDoubleClick(QMouseEvent* e);
-    void myRMousePressEvent(QMouseEvent *e);
-    void myRMouseReleaseEvent(QMouseEvent *e);
-    void myRMouseMoveEvent(QMouseEvent *e);
 private:
-    QCustomPlot *customPlot1;
-    QCustomPlot *customPlot2;
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
