@@ -13,10 +13,11 @@ public:
     {
         Crosshair,//十字线
         ShortLine, //线段
+        ShortLine2,
         Line, //左边的直线
         DashLine //双虚线
     };
-    explicit XxwTraceLine(QCustomPlot *_plot, LineType _type = Crosshair,QColor _color=Qt::red,QPen _pen=QPen(Qt::red,2,Qt::SolidLine),double size=10, QObject *parent = Q_NULLPTR);
+    explicit XxwTraceLine(QCustomPlot *_plot, LineType _type = Crosshair,QPen _pen=QPen(Qt::red,2,Qt::SolidLine),bool upper=false,double size=10, QObject *parent = Q_NULLPTR);
     ~XxwTraceLine();
     void initLine();
     void updatePosition(float xValue, float yValue);
@@ -39,7 +40,7 @@ protected:
     float m_yValue;
 
     LineType m_type;//类型
-    QColor m_color;
+    bool m_upper; //十字游标的垂直说明是在0点还是upper处
     QPen m_pen;
     QCustomPlot *m_plot;//图表
     QCPItemStraightLine *m_lineV; //垂直线

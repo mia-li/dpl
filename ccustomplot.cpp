@@ -13,7 +13,7 @@ void CCustomPlot::Initial()
     axisRect()->setBackground(Qt::white);   // 设置QCPAxisRect背景颜色
 
     xAxis->setRange(0, 0.65);
-    yAxis->setRange(1, 7);
+    yAxis->setRange(0, 7);
 
     xAxis->setBasePen(QPen(Qt::white, 2));  // 轴线的画笔
     xAxis->setTickPen(QPen(Qt::white, 2));  // 轴刻度线的画笔
@@ -33,7 +33,7 @@ void CCustomPlot::Initial()
 
 //色标
     QCPColorMap *colorMap = new QCPColorMap(xAxis, yAxis);
-    colorMap->data()->setRange(QCPRange(0, 7), QCPRange(0, 50));
+    colorMap->data()->setRange(QCPRange(0, 0.65), QCPRange(0, 7));
     QCPColorScale *colorScale = new QCPColorScale(this);
     colorScale->setBarWidth(11);
     colorScale->setDataRange(QCPRange(0, 100));
@@ -74,21 +74,50 @@ void CCustomPlot::Initial()
 
     m_lineTracer1 = new XxwTraceLine(this);
     m_lineTracer1->setVisible(false);
-    m_lineTracer2 = new XxwTraceLine(this,XxwTraceLine::Crosshair,Qt::green);
+    m_lineTracer2 = new XxwTraceLine(this,XxwTraceLine::Crosshair,QPen(Qt::green,2,Qt::SolidLine));
     m_lineTracer2->setVisible(false);
-    m_lineTracerLine = new XxwTraceLine(this,XxwTraceLine::Line,Qt::green,QPen(Qt::red,2,Qt::DashLine));
+    m_lineTracerLine = new XxwTraceLine(this,XxwTraceLine::Line,QPen(Qt::red,2,Qt::DashLine));
 
+    QCPTextElement *title=new QCPTextElement(this);
+    title->setText("GROUP -1/C SCAN/ FRAME 342");
+    title->setTextFlags(Qt::AlignLeft|Qt::AlignBottom);
+    title->setTextColor(Qt::red);
+    title->setFont(QFont("sans",12,QFont::Thin));
+    plotLayout()->insertRow(0);
+    plotLayout()->addElement(0,0,title);
+    plotLayout()->setRowSpacing(0);
    //立即刷新
     rescaleAxes();//自适应大小
     replot();
 }
-void CCustomPlot::OthersMouseEvent()
+void CCustomPlot::updateY1Event(float y_val)
 {
-//    m_lineTracer1->updatePosition(Tracer1x,Tracer1y);
-//    m_lineTracer1->setVisible(true);
-//    m_lineTracer2->updatePosition(Tracer2x,Tracer2y);
-//    m_lineTracer2->setVisible(true);
-    //cout<<"signal"<<endl;
+    m_lineTracer1->updatePositionY(y_val);
+    m_lineTracer1->setVisible(true);
+    this->replot();
+}
+void CCustomPlot::updateY2Event(float y_val)
+{
+    m_lineTracer2->updatePositionY(y_val);
+    m_lineTracer2->setVisible(true);
+    this->replot();
+}
+void CCustomPlot::updateX1Event(float x_val)
+{
+    m_lineTracer1->updatePositionX(x_val);
+    m_lineTracer1->setVisible(true);
+    this->replot();
+}
+void CCustomPlot::updateX2Event(float x_val)
+{
+    m_lineTracer2->updatePositionX(x_val);
+    m_lineTracer2->setVisible(true);
+    this->replot();
+}
+void CCustomPlot::updateX3Event(float x_val)
+{
+    m_lineTracerLine->updatePositionX(x_val);
+    m_lineTracerLine->setVisible(true);
     this->replot();
 }
 void CCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
@@ -101,6 +130,8 @@ void CCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer1->updatePosition(x,y);
         m_lineTracer1->setVisible(true);
+        updateX1b(x);
+        updateX1s(y);
 //        m_lineRTracer1->updatePositionY(y);
 //        m_lineRTracer1->setVisible(true);
     }
@@ -108,6 +139,8 @@ void CCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer2->updatePosition(x,y);
         m_lineTracer2->setVisible(true);
+        updateX2b(x);
+        updateX2s(y);
 //        m_lineRTracer2->updatePositionY(y);
 //        m_lineRTracer2->setVisible(true);
     }
@@ -122,17 +155,17 @@ void CCustomPlot::mousePressEvent(QMouseEvent *event)
     float x_val = xAxis->pixelToCoord(x_pos);
     float y_val = yAxis->pixelToCoord(y_pos);
 
-    if(fabs(x_val-m_lineTracer1->getPositionX())<1.0)
+    if(fabs(x_val-m_lineTracer1->getPositionX())<0.1)
     {
 //        customPlot->cursor().setShape(Qt::SizeVerCursor);
         m_lineTracer1->SelectedV=true;
     }
-    else if(fabs(x_val-m_lineTracer2->getPositionX())<1.0)
+    else if(fabs(x_val-m_lineTracer2->getPositionX())<0.1)
     {
 //        customPlot->cursor().setShape(Qt::SizeVerCursor);
         m_lineTracer2->SelectedV=true;
     }
-    else if(fabs(x_val-m_lineTracerLine->getPositionX())<1.0)
+    else if(fabs(x_val-m_lineTracerLine->getPositionX())<0.1)
     {
         m_lineTracerLine->SelectedV=true;
     }
@@ -149,6 +182,7 @@ void CCustomPlot::mousePressEvent(QMouseEvent *event)
     else
     {
         //m_lineRTracerShort->setVisible(false);
+        SetShortLineVis();
         m_lineTracer1->SelectedH=false;
         m_lineTracer2->SelectedH=false;
         m_lineTracer1->SelectedV=false;
@@ -180,24 +214,29 @@ void CCustomPlot::mouseMoveEvent(QMouseEvent *event)
     if(m_lineTracer1->SelectedH)
     {
         m_lineTracer1->updatePositionY(y_val);
+        updateX1s(y_val);//c-s 拖横线 s竖线跟着动
        // m_lineRTracer1->updatePositionY(y_val);
     }
     else if(m_lineTracer1->SelectedV)
     {
         m_lineTracer1->updatePositionX(x_val);
+        updateX1b(x_val);
     }
     else if(m_lineTracer2->SelectedH)
     {
         m_lineTracer2->updatePositionY(y_val);
+        updateX2s(y_val);
         //m_lineRTracer2->updatePositionY(y_val);
     }
     else if(m_lineTracer2->SelectedV)
     {
         m_lineTracer2->updatePositionX(x_val);
+        updateX2b(x_val);
     }
     else if(m_lineTracerLine->SelectedV)
     {
         m_lineTracerLine->updatePositionX(x_val);
+        updateX3(x_val);
     }
     replot();
 }

@@ -74,12 +74,20 @@ void SCustomPlot::Initial()
 
     m_lineTracer1 = new XxwTraceLine(this);
     m_lineTracer1->setVisible(false);
-    m_lineTracer2 = new XxwTraceLine(this,XxwTraceLine::Crosshair,Qt::green);
+    m_lineTracer2 = new XxwTraceLine(this,XxwTraceLine::Crosshair,QPen(Qt::green,2,Qt::SolidLine));
     m_lineTracer2->setVisible(false);
     m_lineTracerLine = new XxwTraceLine(this,XxwTraceLine::Line);
-    m_lineTracerDashLine = new XxwTraceLine(this,XxwTraceLine::DashLine);
+    m_lineTracerDashLine = new XxwTraceLine(this,XxwTraceLine::DashLine,QPen(Qt::red,2,Qt::DashLine));
     m_lineTracerDashLine->setVisible(false);
 
+    QCPTextElement *title=new QCPTextElement(this);
+    title->setText("GROUP -1/S SCAN");
+    title->setTextFlags(Qt::AlignLeft|Qt::AlignBottom);
+    title->setTextColor(Qt::red);
+    title->setFont(QFont("sans",12,QFont::Thin));
+    plotLayout()->insertRow(0);
+    plotLayout()->addElement(0,0,title);
+    plotLayout()->setRowSpacing(0);
    //立即刷新
     rescaleAxes();//自适应大小
     replot();
@@ -94,6 +102,18 @@ void SCustomPlot::updateY1Event(float y_val)
 void SCustomPlot::updateY2Event(float y_val)
 {
     m_lineTracer2->updatePositionY(y_val);
+    m_lineTracer2->setVisible(true);
+    this->replot();
+}
+void SCustomPlot::updateX1Event(float x_val)
+{
+    m_lineTracer1->updatePositionX(x_val);
+    m_lineTracer1->setVisible(true);
+    this->replot();
+}
+void SCustomPlot::updateX2Event(float x_val)
+{
+    m_lineTracer2->updatePositionX(x_val);
     m_lineTracer2->setVisible(true);
     this->replot();
 }
@@ -212,6 +232,7 @@ void SCustomPlot::mouseMoveEvent(QMouseEvent *event)
     else if(m_lineTracer1->SelectedV)
     {
         m_lineTracer1->updatePositionX(x_val);
+        updateY1c(x_val); //s-c 拖竖线 c的横线跟着动
     }
     else if(m_lineTracer2->SelectedH)
     {
@@ -221,6 +242,7 @@ void SCustomPlot::mouseMoveEvent(QMouseEvent *event)
     else if(m_lineTracer2->SelectedV)
     {
         m_lineTracer2->updatePositionX(x_val);
+        updateY2c(x_val);
     }
     else if(m_lineTracerLine->SelectedV)
     {

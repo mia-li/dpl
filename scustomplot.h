@@ -28,10 +28,14 @@ public:
 signals:
     void updateY1(float y_val);
     void updateY2(float y_val);
+    void updateY1c(float y_val);
+    void updateY2c(float y_val);
     void SetShortLineVis();
 public slots:
     void updateY1Event(float y_val);
     void updateY2Event(float y_val);
+    void updateX1Event(float x_val);
+    void updateX2Event(float x_val);
     void SetDashLineVisEvent();
     void updateDashYEvent(float y_val);
     void updateDashEvent(float x_val,float y_val);
