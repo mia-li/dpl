@@ -74,21 +74,38 @@ void TopcCustomPlot::Initial()
 
     m_lineTracerLine1 = new XxwTraceLine(this);
     m_lineTracerLine1->setVisible(false);
-    m_lineTracerLine2 = new XxwTraceLine(this,XxwTraceLine::Line,Qt::green);
+    m_lineTracerLine2 = new XxwTraceLine(this,XxwTraceLine::Line,QPen(Qt::green,2,Qt::SolidLine));
     m_lineTracerLine2->setVisible(false);
-    m_lineTracerLine3 = new XxwTraceLine(this,XxwTraceLine::Line,Qt::red,QPen(Qt::red,2,Qt::DashLine));
+    m_lineTracerLine3 = new XxwTraceLine(this,XxwTraceLine::Line,QPen(Qt::red,2,Qt::DashLine));
 
+    QCPTextElement *title=new QCPTextElement(this);
+    title->setText("GROUP -1/TOPC SCAN/[FRAME-342]");
+    title->setTextFlags(Qt::AlignLeft|Qt::AlignBottom);
+    title->setTextColor(Qt::red);
+    title->setFont(QFont("sans",12,QFont::Thin));
+    plotLayout()->insertRow(0);
+    plotLayout()->addElement(0,0,title);
+    plotLayout()->setRowSpacing(0);
    //立即刷新
     rescaleAxes();//自适应大小
     replot();
 }
-void TopcCustomPlot::OthersMouseEvent()
+void TopcCustomPlot::updateX1Event(float x_val)
 {
-//    m_lineTracer1->updatePosition(Tracer1x,Tracer1y);
-//    m_lineTracer1->setVisible(true);
-//    m_lineTracer2->updatePosition(Tracer2x,Tracer2y);
-//    m_lineTracer2->setVisible(true);
-    //cout<<"signal"<<endl;
+    m_lineTracerLine1->updatePositionX(x_val);
+    m_lineTracerLine1->setVisible(true);
+    this->replot();
+}
+void TopcCustomPlot::updateX2Event(float x_val)
+{
+    m_lineTracerLine2->updatePositionX(x_val);
+    m_lineTracerLine2->setVisible(true);
+    this->replot();
+}
+void TopcCustomPlot::updateX3Event(float x_val)
+{
+    m_lineTracerLine3->updatePositionX(x_val);
+    m_lineTracerLine3->setVisible(true);
     this->replot();
 }
 void TopcCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
@@ -138,6 +155,7 @@ void TopcCustomPlot::mousePressEvent(QMouseEvent *event)
     }
     else
     {
+        SetShortLineVis();
         m_lineTracerLine1->SelectedV=false;
         m_lineTracerLine2->SelectedV=false;
         m_lineTracerLine3->SelectedV=false;
@@ -163,14 +181,17 @@ void TopcCustomPlot::mouseMoveEvent(QMouseEvent *event)
     if(m_lineTracerLine1->SelectedV)
     {
         m_lineTracerLine1->updatePositionX(x_val);
+        updateX1(x_val);
     }
     else if(m_lineTracerLine2->SelectedV)
     {
         m_lineTracerLine2->updatePositionX(x_val);
+        updateX2(x_val);
     }
     else if(m_lineTracerLine3->SelectedV)
     {
         m_lineTracerLine3->updatePositionX(x_val);
+        updateX3(x_val);
     }
     replot();
 }

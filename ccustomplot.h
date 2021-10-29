@@ -23,6 +23,19 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
+signals:
+    void updateX1b(float y_val);
+    void updateX2b(float y_val);
+    void updateX1s(float x_val);
+    void updateX2s(float x_val);
+    void updateX3(float x_val);
+    void SetShortLineVis();
+public slots:
+    void updateY1Event(float y_val);
+    void updateY2Event(float y_val);
+    void updateX1Event(float x_val);
+    void updateX2Event(float x_val);
+    void updateX3Event(float x_val);
 };
 
 #endif // CCustomPlot_H
