@@ -16148,6 +16148,9 @@ QRgb QCPColorGradient::color(double position, const QCPRange &range, bool logari
 void QCPColorGradient::loadPreset(GradientPreset preset)
 {
   clearColorStops();
+  //gpHuge==ONDT_Corrosion
+  //gpGrayscale == ONDT_RFTOFD
+  //gpJet==ONDT_Amplitude
   switch (preset)
   {
     case gpGrayscale:
@@ -16233,19 +16236,28 @@ void QCPColorGradient::loadPreset(GradientPreset preset)
       break;
     case gpJet:
       setColorInterpolation(ciRGB);
-      setColorStopAt(0, QColor(0, 0, 100));
-      setColorStopAt(0.15, QColor(0, 50, 255));
-      setColorStopAt(0.35, QColor(0, 255, 255));
-      setColorStopAt(0.65, QColor(255, 255, 0));
-      setColorStopAt(0.85, QColor(255, 30, 0));
-      setColorStopAt(1, QColor(100, 0, 0));
+//      setColorStopAt(0, QColor(0, 0, 100));
+//      setColorStopAt(0.15, QColor(0, 50, 255));
+//      setColorStopAt(0.35, QColor(0, 255, 255));
+//      setColorStopAt(0.65, QColor(255, 255, 0));
+//      setColorStopAt(0.85, QColor(255, 30, 0));
+//      setColorStopAt(1, QColor(100, 0, 0));
+      setColorStopAt(0, QColor(255, 255, 255));
+      setColorStopAt(0.15, QColor(10, 10, 190));
+      setColorStopAt(0.33, QColor(100, 140, 100));
+      setColorStopAt(0.6, QColor(255, 255, 40));
+      setColorStopAt(0.85, QColor(255, 100, 0));
+      setColorStopAt(1, QColor(190, 10, 10));
       break;
     case gpHues:
       setColorInterpolation(ciHSV);
       setColorStopAt(0, QColor(255, 0, 0));
-      setColorStopAt(1.0/3.0, QColor(0, 0, 255));
-      setColorStopAt(2.0/3.0, QColor(0, 255, 0));
-      setColorStopAt(1, QColor(255, 0, 0));
+      setColorStopAt(0.15, QColor(255, 100, 0));
+      setColorStopAt(0.33, QColor(255, 255, 40));
+      setColorStopAt(0.6, QColor(0, 255, 0));
+      setColorStopAt(0.75, QColor(50, 255, 255));
+      setColorStopAt(1, QColor(0, 0, 255));
+
       break;
   }
 }

@@ -1,0 +1,47 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>pics/6.png</file>
+        <file>pics/1.png</file>
+        <file>pics/2.png</file>
+        <file>pics/3.png</file>
+        <file>pics/4.png</file>
+        <file>pics/5.png</file>
+        <file>pics/7.png</file>
+        <file>pics/8.png</file>
+        <file>pics/9.png</file>
+        <file>pics/10.png</file>
+        <file>pics/11.png</file>
+        <file>pics/12.png</file>
+        <file>pics/13.png</file>
+        <file>pics/14.png</file>
+        <file>pics/15.png</file>
+        <file>pics/16.png</file>
+        <file>pics/17.png</file>
+        <file>pics/18.png</file>
+        <file>pics/19.png</file>
+        <file>pics/20.png</file>
+        <file>pics/21.png</file>
+        <file>pics/s1.png</file>
+        <file>pics/s2.png</file>
+        <file>pics/s3.png</file>
+        <file>pics/s4.png</file>
+        <file>pics/s5.png</file>
+        <file>pics/s6.png</file>
+        <file>pics/s7.png</file>
+        <file>pics/s8.png</file>
+        <file>pics/s9.png</file>
+        <file>pics/s10.png</file>
+        <file>pics/s11.png</file>
+        <file>pics/s1b.png</file>
+        <file>pics/s2b.png</file>
+        <file>pics/s3b.png</file>
+        <file>pics/s4b.png</file>
+        <file>pics/s5b.png</file>
+        <file>pics/s6b.png</file>
+        <file>pics/s7b.png</file>
+        <file>pics/s8b.png</file>
+        <file>pics/s9b.png</file>
+        <file>pics/s10b.png</file>
+        <file>pics/s11b.png</file>
+    </qresource>
+</RCC>

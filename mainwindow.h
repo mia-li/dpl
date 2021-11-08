@@ -10,6 +10,7 @@
 #include "scustomplot.h"
 #include "topccustomplot.h"
 #include "a2customplot.h"
+#include "layoutpage.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -32,9 +33,14 @@ public:
     XxwTraceLine* m_lineLDashTracer;
     XxwTraceLine* m_lineLStLineTracer;
     QGraphicsView* graphicsView;
+
+    LayoutPage* lay;
 private slots:
     void on_pushButton_clicked();
 
+
+    void on_pushButton_2_clicked();
+    void layoutData(QString type);
 
 private:
 

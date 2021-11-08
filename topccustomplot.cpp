@@ -13,7 +13,7 @@ void TopcCustomPlot::Initial()
     axisRect()->setBackground(Qt::white);   // 设置QCPAxisRect背景颜色
 
     xAxis->setRange(0, 0.65);
-    yAxis->setRange(1, 7);
+    yAxis->setRange(0, 7);
 
     xAxis->setBasePen(QPen(Qt::white, 2));  // 轴线的画笔
     xAxis->setTickPen(QPen(Qt::white, 2));  // 轴刻度线的画笔
@@ -33,7 +33,7 @@ void TopcCustomPlot::Initial()
 
 //色标
     QCPColorMap *colorMap = new QCPColorMap(xAxis, yAxis);
-    colorMap->data()->setRange(QCPRange(0, 7), QCPRange(0, 50));
+    colorMap->data()->setRange(QCPRange(0, 0.65), QCPRange(0, 7));
     QCPColorScale *colorScale = new QCPColorScale(this);
     colorScale->setBarWidth(11);
     colorScale->setDataRange(QCPRange(0, 100));
@@ -55,14 +55,10 @@ void TopcCustomPlot::Initial()
     colorMap->setColorScale(colorScale);
 
     //设置色条的颜色变化
-    QCPColorGradient gradient;  // 色条使用的颜色渐变
-    gradient.setColorInterpolation(QCPColorGradient::ciRGB);
-    gradient.setColorStopAt(0, QColor(255, 255, 255));
-    gradient.setColorStopAt(0.15, QColor(10, 10, 190));
-    gradient.setColorStopAt(0.33, QColor(100, 140, 100));
-    gradient.setColorStopAt(0.6, QColor(255, 255, 40));
-    gradient.setColorStopAt(0.85, QColor(255, 100, 0));
-    gradient.setColorStopAt(1, QColor(190, 10, 10));
+    //gpHuge==ONDT_Corrosion
+    //gpGrayscale == ONDT_RFTOFD
+    //gpJet==ONDT_Amplitude
+    QCPColorGradient gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
     colorMap->setGradient(gradient);
     // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
     colorMap->rescaleDataRange();
