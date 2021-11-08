@@ -20,6 +20,8 @@ SOURCES += \
     acustomplot.cpp \
     bcustomplot.cpp \
     ccustomplot.cpp \
+    layouticon.cpp \
+    layoutpage.cpp \
     main.cpp \
     mainwindow.cpp \
     qcustomplot.cpp \
@@ -32,6 +34,8 @@ HEADERS += \
     acustomplot.h \
     bcustomplot.h \
     ccustomplot.h \
+    layouticon.h \
+    layoutpage.h \
     mainwindow.h \
     qcustomplot.h \
     scustomplot.h \
@@ -39,6 +43,7 @@ HEADERS += \
     xxwtraceline.h
 
 FORMS += \
+    layoutpage.ui \
     mainwindow.ui
 
 UI_DIR=./UI
@@ -47,3 +52,9 @@ UI_DIR=./UI
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    pics/1.png
+
+RESOURCES += \
+    resource.qrc

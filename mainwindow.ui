@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>100</x>
       <y>220</y>
       <width>93</width>
       <height>28</height>
@@ -437,6 +437,19 @@
       <widget class="CCustomPlot" name="widget19c" native="true"/>
      </widget>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>650</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>布局</string>
+    </property>
    </widget>
   </widget>
  </widget>

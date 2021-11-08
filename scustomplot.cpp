@@ -55,14 +55,10 @@ void SCustomPlot::Initial()
     colorMap->setColorScale(colorScale);
 
     //设置色条的颜色变化
-    QCPColorGradient gradient;  // 色条使用的颜色渐变
-    gradient.setColorInterpolation(QCPColorGradient::ciRGB);
-    gradient.setColorStopAt(0, QColor(255, 255, 255));
-    gradient.setColorStopAt(0.15, QColor(10, 10, 190));
-    gradient.setColorStopAt(0.33, QColor(100, 140, 100));
-    gradient.setColorStopAt(0.6, QColor(255, 255, 40));
-    gradient.setColorStopAt(0.85, QColor(255, 100, 0));
-    gradient.setColorStopAt(1, QColor(190, 10, 10));
+    //gpHuge==ONDT_Corrosion
+    //gpGrayscale == ONDT_RFTOFD
+    //gpJet==ONDT_Amplitude
+    QCPColorGradient gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
     colorMap->setGradient(gradient);
     // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
     colorMap->rescaleDataRange();
