@@ -37,10 +37,12 @@ public:
     LayoutPage* lay;
 private slots:
     void on_pushButton_clicked();
-
+    void CursorEvent( QObject *sender,  QObject *receiver);
 
     void on_pushButton_2_clicked();
     void layoutData(QString type);
+    void DisplayCustomLayout(int customlayout,int local1,int local2,int local3,int local4);
+    void InitCustomWidget(QWidget* widget,QCustomPlot *&cp,int local);
 
 private:
 

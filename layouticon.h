@@ -16,6 +16,7 @@ public:
     static int layoutNum;
     QRadioButton* rb;
     int index;
+    int m_customlayout=1;
 signals:
 
 private:
@@ -35,7 +36,7 @@ private:
     QString t4;
 
     QWidget *m_widget;
-    int m_customlayout=1;
+
     int lx=10,ly=10;
 
     QString IndToString(int index);

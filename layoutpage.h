@@ -30,6 +30,7 @@ public:
 
 signals:
     void sendLayoutData(QString);
+    void DisplayCustomLayout(int ,int ,int ,int ,int );
 private slots:
     void on_pushButtonno_clicked();
 
@@ -47,6 +48,10 @@ private slots:
     void on_pushButtonsure_clicked();
 
     void on_pushButtondelete_clicked();
+
+    void on_pushButtonno_2_clicked();
+
+    void on_pushButtonyes_2_clicked();
 
 private:
     Ui::LayoutPage *ui;
