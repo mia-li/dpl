@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>16</number>
+     <number>11</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="A2CustomPlot" name="widget" native="true">
@@ -435,6 +435,237 @@
        <widget class="ACustomPlot" name="widget19a" native="true"/>
       </widget>
       <widget class="CCustomPlot" name="widget19c" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page20"/>
+    <widget class="QWidget" name="page21"/>
+    <widget class="QWidget" name="pagec1">
+     <widget class="QWidget" name="widget_2" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>1161</width>
+        <height>681</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec2">
+     <widget class="QSplitter" name="splitterc2">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>80</y>
+        <width>1031</width>
+        <height>521</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QWidget" name="widget_3" native="true"/>
+      <widget class="QWidget" name="widget_4" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec3">
+     <widget class="QSplitter" name="splitterc3">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>1201</width>
+        <height>691</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="widget_5" native="true"/>
+      <widget class="QWidget" name="widget_6" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec4">
+     <widget class="QSplitter" name="splitterc4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>1161</width>
+        <height>671</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="widget_7" native="true"/>
+      <widget class="QWidget" name="widget_8" native="true"/>
+      <widget class="QWidget" name="widget_9" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec5">
+     <widget class="QSplitter" name="splitterc5">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>20</y>
+        <width>1131</width>
+        <height>681</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QWidget" name="widget_10" native="true"/>
+      <widget class="QWidget" name="widget_11" native="true"/>
+      <widget class="QWidget" name="widget_12" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec6">
+     <widget class="QSplitter" name="splitterc6v">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>1251</width>
+        <height>691</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitterc6h">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QWidget" name="widget_13" native="true"/>
+       <widget class="QWidget" name="widget_14" native="true"/>
+      </widget>
+      <widget class="QWidget" name="widget_15" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec7">
+     <widget class="QSplitter" name="splitterc7h">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>30</y>
+        <width>1141</width>
+        <height>661</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitterc7v">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QWidget" name="widget_16" native="true"/>
+       <widget class="QWidget" name="widget_17" native="true"/>
+      </widget>
+      <widget class="QWidget" name="widget_18" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec8">
+     <widget class="QSplitter" name="splitterc8v">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>1231</width>
+        <height>631</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitterc8h">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QWidget" name="widget_20" native="true"/>
+       <widget class="QWidget" name="widget_22" native="true"/>
+       <widget class="QWidget" name="widget_21" native="true"/>
+      </widget>
+      <widget class="QWidget" name="widget_19" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec9">
+     <widget class="QSplitter" name="splitterc9h2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>1221</width>
+        <height>661</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitterc9v">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QWidget" name="widget_23" native="true"/>
+       <widget class="QSplitter" name="splitterc9h1">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <widget class="QWidget" name="widget_25" native="true"/>
+        <widget class="QWidget" name="widget_26" native="true"/>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="widget_24" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec10">
+     <widget class="QSplitter" name="splitterc10v">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>1151</width>
+        <height>651</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QSplitter" name="splitterc10h">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QWidget" name="widget_27" native="true"/>
+       <widget class="QWidget" name="widget_28" native="true"/>
+      </widget>
+      <widget class="QWidget" name="widget_29" native="true"/>
+      <widget class="QWidget" name="widget_30" native="true"/>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="pagec11">
+     <widget class="QSplitter" name="splitterc11h">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>1221</width>
+        <height>691</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QSplitter" name="splitterc11v">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <widget class="QWidget" name="widget_31" native="true"/>
+       <widget class="QWidget" name="widget_33" native="true"/>
+      </widget>
+      <widget class="QWidget" name="widget_32" native="true"/>
+      <widget class="QWidget" name="widget_34" native="true"/>
      </widget>
     </widget>
    </widget>

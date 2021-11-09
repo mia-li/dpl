@@ -314,3 +314,23 @@ void LayoutPage::on_pushButtondelete_clicked()
 
     }
 }
+
+void LayoutPage::on_pushButtonno_2_clicked()
+{
+    this->hide();
+}
+
+void LayoutPage::on_pushButtonyes_2_clicked()
+{
+    for(int i=0;i<customButton.size();i++)
+    {
+        if(customButton[i]->rb->isChecked())
+        {
+            emit DisplayCustomLayout(customButton[i]->m_customlayout,local1,local2,local3,local4);
+            this->hide();
+            break;
+        }
+
+    }
+
+}

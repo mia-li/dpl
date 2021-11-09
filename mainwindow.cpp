@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     Initial();
     lay=new LayoutPage();
     connect(lay,SIGNAL(sendLayoutData(QString)),this,SLOT(layoutData(QString)));
+    connect(lay,SIGNAL(DisplayCustomLayout(int ,int ,int ,int ,int )),this,SLOT(DisplayCustomLayout(int ,int ,int ,int ,int )));
    // ui->pushButton_2->setVisible(false);
 }
 void MainWindow::Initial()
@@ -23,6 +24,196 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int local3,int local4)
+{
+
+    QCustomPlot *cp1;
+    QCustomPlot *cp2;
+    QCustomPlot *cp3;
+    QCustomPlot *cp4;
+
+    if(customlayout==1)
+    {
+        InitCustomWidget(ui->pagec1,cp1,local1);
+    }
+    else if(customlayout==2)
+    {
+        InitCustomWidget(ui->splitterc2,cp1,local1);
+        InitCustomWidget(ui->splitterc2,cp2,local2);
+
+//        if(local1==1)
+//        {
+//            cp1=new ACustomPlot(ui->splitterc2);
+//        }
+//        else if(local1==2)
+//        {
+//            cp1=new BCustomPlot(ui->splitterc2);
+//        }
+//        else if(local1>=3||local1<=5)
+//        {
+//            cp1=new CCustomPlot(ui->splitterc2);
+//        }
+//        else if(local1==6)
+//        {
+//            cp1=new SCustomPlot(ui->splitterc2);
+//        }
+//        else if(local1==7)
+//        {
+//            cp1=new TopcCustomPlot(ui->splitterc2);
+//        }
+//        else if(local1==8)
+//        {
+//            //cp=new BCustomPlot(ui->pagec1);
+//        }
+
+//        if(local2==1)
+//        {
+//            cp2=new ACustomPlot(ui->splitterc2);
+//        }
+//        else if(local2==2)
+//        {
+//            cp2=new BCustomPlot(ui->splitterc2);
+//        }
+//        else if(local2>=3||local2<=5)
+//        {
+//            cp2=new CCustomPlot(ui->splitterc2);
+//        }
+//        else if(local2==6)
+//        {
+//            cp2=new SCustomPlot(ui->splitterc2);
+//        }
+//        else if(local2==7)
+//        {
+//            cp2=new TopcCustomPlot(ui->splitterc2);
+//        }
+//        else if(local2==8)
+//        {
+//            //cp=new BCustomPlot(ui->pagec1);
+//        }
+
+        ui->splitterc2->replaceWidget(0,cp1);
+        ui->splitterc2->replaceWidget(1,cp2);
+
+    }
+    else if(customlayout==3)
+    {
+        InitCustomWidget(ui->splitterc3,cp1,local1);
+        InitCustomWidget(ui->splitterc3,cp2,local2);
+        ui->splitterc3->replaceWidget(0,cp1);
+        ui->splitterc3->replaceWidget(1,cp2);
+    }
+    else if(customlayout==4)
+    {
+        InitCustomWidget(ui->splitterc4,cp1,local1);
+        InitCustomWidget(ui->splitterc4,cp2,local2);
+        InitCustomWidget(ui->splitterc4,cp3,local3);
+        ui->splitterc4->replaceWidget(0,cp1);
+        ui->splitterc4->replaceWidget(1,cp2);
+        ui->splitterc4->replaceWidget(2,cp3);
+    }
+    else if(customlayout==5)
+    {
+        InitCustomWidget(ui->splitterc5,cp1,local1);
+        InitCustomWidget(ui->splitterc5,cp2,local2);
+        InitCustomWidget(ui->splitterc5,cp3,local3);
+        ui->splitterc5->replaceWidget(0,cp1);
+        ui->splitterc5->replaceWidget(1,cp2);
+        ui->splitterc5->replaceWidget(2,cp3);
+    }
+    else if(customlayout==6)
+    {
+        InitCustomWidget(ui->splitterc6h,cp1,local1);
+        InitCustomWidget(ui->splitterc6h,cp2,local2);
+        InitCustomWidget(ui->splitterc6v,cp3,local3);
+        ui->splitterc6h->replaceWidget(0,cp1);
+       // ui->splitterc6h->replaceWidget(1,cp2);
+        ui->splitterc6v->replaceWidget(1,cp3);
+    }
+    else if(customlayout==7)
+    {
+        InitCustomWidget(ui->splitterc7v,cp1,local1);
+        InitCustomWidget(ui->splitterc7v,cp2,local2);
+        InitCustomWidget(ui->splitterc7h,cp3,local3);
+        ui->splitterc7v->replaceWidget(0,cp1);
+        ui->splitterc7v->replaceWidget(1,cp2);
+        ui->splitterc7h->replaceWidget(1,cp3);
+    }
+    else if(customlayout==8)
+    {
+        InitCustomWidget(ui->splitterc8h,cp1,local1);
+        InitCustomWidget(ui->splitterc8h,cp2,local2);
+        InitCustomWidget(ui->splitterc8h,cp3,local3);
+        InitCustomWidget(ui->splitterc8v,cp4,local4);
+        ui->splitterc8h->replaceWidget(0,cp1);
+        ui->splitterc8h->replaceWidget(1,cp2);
+        ui->splitterc8h->replaceWidget(2,cp3);
+        ui->splitterc8v->replaceWidget(1,cp4);
+    }
+    else if(customlayout==9)
+    {
+        InitCustomWidget(ui->splitterc9v,cp1,local1);
+        InitCustomWidget(ui->splitterc9h1,cp2,local2);
+        InitCustomWidget(ui->splitterc9h1,cp3,local3);
+        InitCustomWidget(ui->splitterc9h2,cp4,local4);
+        ui->splitterc9v->replaceWidget(0,cp1);
+        ui->splitterc9h1->replaceWidget(0,cp2);
+        ui->splitterc9h1->replaceWidget(1,cp3);
+        ui->splitterc9h2->replaceWidget(1,cp4);
+    }
+    else if(customlayout==10)
+    {
+        InitCustomWidget(ui->splitterc10h,cp1,local1);
+        InitCustomWidget(ui->splitterc10h,cp2,local2);
+        InitCustomWidget(ui->splitterc10v,cp3,local3);
+        InitCustomWidget(ui->splitterc10v,cp4,local4);
+        ui->splitterc10h->replaceWidget(0,cp1);
+        ui->splitterc10h->replaceWidget(1,cp2);
+        ui->splitterc10v->replaceWidget(1,cp3);
+        ui->splitterc10v->replaceWidget(2,cp4);
+    }
+    else if(customlayout==11)
+    {
+        InitCustomWidget(ui->splitterc11v,cp1,local1);
+        InitCustomWidget(ui->splitterc11v,cp2,local2);
+        InitCustomWidget(ui->splitterc11h,cp3,local3);
+        InitCustomWidget(ui->splitterc11h,cp4,local4);
+
+        ui->splitterc11v->replaceWidget(0,cp1);
+        ui->splitterc11v->replaceWidget(1,cp2);
+        ui->splitterc11h->replaceWidget(1,cp3);
+        ui->splitterc11h->replaceWidget(2,cp4);
+    }
+    int curIndex=customlayout+20;//customlayout 1-11
+    ui->stackedWidget->setCurrentIndex(curIndex);
+}
+void MainWindow::InitCustomWidget(QWidget* widget,QCustomPlot *&cp,int local)//在子函数中为指针分配空间，参数列表中要使用指针的引用。
+{//若直接将指针作为形参，动态分配的空间会成为内存泄漏，不能达到分配空间的效果。
+    if(local==1)
+    {
+        cp=new ACustomPlot(widget);
+    }
+    else if(local==2)
+    {
+        cp=new BCustomPlot(widget);
+    }
+    else if(local>=3||local<=5)
+    {
+        cp=new CCustomPlot(widget);
+    }
+    else if(local==6)
+    {
+        cp=new SCustomPlot(widget);
+    }
+    else if(local==7)
+    {
+        cp=new TopcCustomPlot(widget);
+    }
+    else if(local==8)
+    {
+        //cp=new BCustomPlot(ui->pagec1);
+    }
+    cp->setGeometry(QRect(10, 20, 1161, 681));
+}
 
 int num=0;
 
@@ -447,8 +638,6 @@ void MainWindow::on_pushButton_clicked()
 
 
 
-
-
 void MainWindow::on_pushButton_2_clicked()
 {
     lay->show();
@@ -865,5 +1054,9 @@ void MainWindow::layoutData(QString type)
         connect(ui->widget19c, &CCustomPlot::updateX2s, (ui->widget19s), &SCustomPlot::updateX2Event);
         connect(ui->widget19c, &CCustomPlot::SetShortLineVis, (ui->widget19a), &ACustomPlot::SetShortLineVisEvent);
     }
+}
+void MainWindow::CursorEvent( QObject *sender,  QObject *receiver)
+{
+
 }
 
