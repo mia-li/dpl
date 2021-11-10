@@ -89,7 +89,7 @@ void BCustomPlot::Initial()
 
 void BCustomPlot::updateY1Event(float y_val)
 {
-    //qDebug("i'm b");
+    qDebug("i'm b");
     m_lineTracer1->updatePositionY(y_val);
     m_lineTracer1->setVisible(true);
     this->replot();

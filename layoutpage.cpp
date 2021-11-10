@@ -200,10 +200,10 @@ void LayoutPage::on_pushButtonback_clicked()
 void LayoutPage::on_pushButtonsure_clicked()
 {
     LayoutIcon* con1;
-    int local1;
-    int local2;
-    int local3;
-    int local4;
+    int local1=0;
+    int local2=0;
+    int local3=0;
+    int local4=0;
     if(customLayout==1)
     {
         if(ui->comboBox1->currentIndex()==0)
@@ -330,11 +330,11 @@ void LayoutPage::on_pushButtonyes_2_clicked()
     {
         if(customButton[i]->rb->isChecked())
         {
+
             emit DisplayCustomLayout(customButton[i]->m_customlayout,customButton[i]->local1,customButton[i]->local2,customButton[i]->local3,customButton[i]->local4);
             this->hide();
             break;
         }
-
     }
 
 }
