@@ -52,7 +52,7 @@ void A2CustomPlot::Initial()
 }
 void A2CustomPlot::updateX1Event(float y_val)
 {
-    //qDebug("i'm a2");
+    qDebug("i'm a2");
     m_lineTracer1->updatePositionX(y_val);
     m_lineTracer1->setVisible(true);
     this->replot();

@@ -68,11 +68,11 @@ void CCustomPlot::Initial()
     axisRect()->setMarginGroup(QCP::msBottom|QCP::msTop, marginGroup);
     colorScale->setMarginGroup(QCP::msBottom|QCP::msTop, marginGroup);
 
-    m_lineTracer1 = new XxwTraceLine(this);
+    m_lineTracer1 = new XxwTraceLine(this); //红色十字标
     m_lineTracer1->setVisible(false);
-    m_lineTracer2 = new XxwTraceLine(this,XxwTraceLine::Crosshair,QPen(Qt::green,2,Qt::SolidLine));
+    m_lineTracer2 = new XxwTraceLine(this,XxwTraceLine::Crosshair,QPen(Qt::green,2,Qt::SolidLine));//绿色十字标
     m_lineTracer2->setVisible(false);
-    m_lineTracerLine = new XxwTraceLine(this,XxwTraceLine::Line,QPen(Qt::red,2,Qt::DashLine));
+    m_lineTracerLine = new XxwTraceLine(this,XxwTraceLine::Line,QPen(Qt::red,2,Qt::DashLine)); //红色虚线
 
     QCPTextElement *title=new QCPTextElement(this);
     title->setText("GROUP -1/C SCAN/ FRAME 342");
@@ -128,6 +128,7 @@ void CCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
         m_lineTracer1->setVisible(true);
         emit updateX1b(x);
         emit updateX1s(y);
+        emit updateY1(y);
 //        m_lineRTracer1->updatePositionY(y);
 //        m_lineRTracer1->setVisible(true);
     }
@@ -137,6 +138,7 @@ void CCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
         m_lineTracer2->setVisible(true);
         emit updateX2b(x);
         emit updateX2s(y);
+        emit updateY2(y);
 //        m_lineRTracer2->updatePositionY(y);
 //        m_lineRTracer2->setVisible(true);
     }
@@ -207,18 +209,18 @@ void CCustomPlot::mouseMoveEvent(QMouseEvent *event)
 
     setInteractions(QCP::iRangeZoom);
 
-    if(m_lineTracer1->SelectedH)
+    if(m_lineTracer1->SelectedH) //红色 水平线
     {
         m_lineTracer1->updatePositionY(y_val);
         emit updateX1s(y_val);//c-s 拖横线 s竖线跟着动
        // m_lineRTracer1->updatePositionY(y_val);
     }
-    else if(m_lineTracer1->SelectedV)
+    else if(m_lineTracer1->SelectedV)//红色 竖直线
     {
         m_lineTracer1->updatePositionX(x_val);
         emit updateX1b(x_val);
     }
-    else if(m_lineTracer2->SelectedH)
+    else if(m_lineTracer2->SelectedH)//绿色 水平线
     {
         m_lineTracer2->updatePositionY(y_val);
         emit updateX2s(y_val);

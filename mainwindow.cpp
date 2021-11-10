@@ -24,10 +24,23 @@ MainWindow::~MainWindow()
 
 void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int local3,int local4)
 {
-    QCustomPlot *cp1;
-    QCustomPlot *cp2;
-    QCustomPlot *cp3;
-    QCustomPlot *cp4;
+    ThCustomPlot *cp1;
+    ThCustomPlot *cp2;
+    ThCustomPlot *cp3;
+    ThCustomPlot *cp4;
+
+    qDebug("%d",local1);
+    qDebug("%d",local2);
+    qDebug("%d",local3);
+    qDebug("%d",local4);
+    if(local1==1) //自定义布局里的acustomplot 都是a2
+        local1=0;
+    if(local2==1) //自定义布局里的acustomplot 都是a2
+        local2=0;
+    if(local3==1) //自定义布局里的acustomplot 都是a2
+        local3=0;
+    if(local4==1) //自定义布局里的acustomplot 都是a2
+        local4=0;
 
     if(customlayout==1)
     {
@@ -35,12 +48,13 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
     }
     else if(customlayout==2)
     {
+
+
         InitCustomWidget(ui->splitterc2,cp1,local1);
         InitCustomWidget(ui->splitterc2,cp2,local2);
 
         ui->splitterc2->replaceWidget(0,cp1);
         ui->splitterc2->replaceWidget(1,cp2);
-
     }
     else if(customlayout==3)
     {
@@ -66,6 +80,7 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         ui->splitterc5->replaceWidget(0,cp1);
         ui->splitterc5->replaceWidget(1,cp2);
         ui->splitterc5->replaceWidget(2,cp3);
+
     }
     else if(customlayout==6)
     {
@@ -75,6 +90,7 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         ui->splitterc6h->replaceWidget(0,cp1);
         ui->splitterc6h->replaceWidget(1,cp2);
         ui->splitterc6v->replaceWidget(1,cp3);
+
     }
     else if(customlayout==7)
     {
@@ -84,6 +100,7 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         ui->splitterc7v->replaceWidget(0,cp1);
         ui->splitterc7v->replaceWidget(1,cp2);
         ui->splitterc7h->replaceWidget(1,cp3);
+
     }
     else if(customlayout==8)
     {
@@ -95,6 +112,7 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         ui->splitterc8h->replaceWidget(1,cp2);
         ui->splitterc8h->replaceWidget(2,cp3);
         ui->splitterc8v->replaceWidget(1,cp4);
+
     }
     else if(customlayout==9)
     {
@@ -130,12 +148,16 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         ui->splitterc11h->replaceWidget(1,cp3);
         ui->splitterc11h->replaceWidget(2,cp4);
     }
+
+    CustomCursorEvent(cp1,cp2,cp3,cp4,customlayout,local1,local2,local3,local4);
     int curIndex=customlayout+20;//customlayout 1-11
     ui->stackedWidget->setCurrentIndex(curIndex);
+
 }
-void MainWindow::InitCustomWidget(QWidget* widget,QCustomPlot *&cp,int local)//在子函数中为指针分配空间，参数列表中要使用指针的引用。
+void MainWindow::InitCustomWidget(QWidget* widget,ThCustomPlot *&cp,int local)//在子函数中为指针分配空间，参数列表中要使用指针的引用。
 {//若直接将指针作为形参，动态分配的空间会成为内存泄漏，不能达到分配空间的效果。
-    if(local==1)
+
+    if(local==0)
     {
         cp=new A2CustomPlot(widget);
     }
@@ -143,7 +165,7 @@ void MainWindow::InitCustomWidget(QWidget* widget,QCustomPlot *&cp,int local)//�
     {
         cp=new BCustomPlot(widget);
     }
-    else if(local>=3||local<=5)
+    else if(local>=3&&local<=5)
     {
         cp=new CCustomPlot(widget);
     }
@@ -159,7 +181,7 @@ void MainWindow::InitCustomWidget(QWidget* widget,QCustomPlot *&cp,int local)//�
     {
         //cp=new BCustomPlot(ui->pagec1);
     }
-    cp->setGeometry(QRect(10, 20, 1161, 681));
+    //cp->setGeometry(QRect(10, 20, 1161, 681));
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -359,12 +381,12 @@ void MainWindow::CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int lo
         }
         if(loc2==6) //S
         {
-            connect(sender, SIGNAL(updateY1), receiver, SLOT(updateY1Event));
-            connect(sender, SIGNAL(updateY2), receiver, SLOT(updateY2Event));
+            connect(sender, SIGNAL(updateY1(float)), receiver, SLOT(updateY1Event(float)));
+            connect(sender, SIGNAL(updateY2(float)), receiver, SLOT(updateY2Event(float)));
             connect(sender, SIGNAL(SetDashLineVis), receiver, SLOT(SetDashLineVisEvent));
-            connect(sender, SIGNAL(updateDash), receiver, SLOT(updateDashEvent));
-            connect(sender, SIGNAL(updateDashY), receiver, SLOT(updateDashYEvent));
-            connect(sender, SIGNAL(changeDashSize), receiver, SLOT(changeDashSizeEvent));
+            connect(sender, SIGNAL(updateDash(float.float)), receiver, SLOT(updateDashEvent(float,float)));
+            connect(sender, SIGNAL(updateDashY(float)), receiver, SLOT(updateDashYEvent(float)));
+            connect(sender, SIGNAL(changeDashSize(float)), receiver, SLOT(changeDashSizeEvent(float)));
         }
     }
     else if(loc1==2) //b
@@ -373,13 +395,13 @@ void MainWindow::CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int lo
         {
             connect(sender, SIGNAL(updateY1(float)), receiver, SLOT(updateX1Event(float)));
             connect(sender, SIGNAL(updateY2(float)), receiver, SLOT(updateX2Event(float)));
-            connect(sender, SIGNAL(SetShortLineVis(float)), receiver, SLOT(SetShortLineVisEvent(float)));
+            connect(sender, SIGNAL(SetShortLineVis()), receiver, SLOT(SetShortLineVisEvent()));
         }
         else if(loc2==1) //a
         {
             connect(sender, SIGNAL(updateY1(float)), receiver, SLOT(updateY1Event(float)));
             connect(sender, SIGNAL(updateY2(float)), receiver, SLOT(updateY2Event(float)));
-            connect(sender, SIGNAL(SetShortLineVis(float)), receiver, SLOT(SetShortLineVisEvent(float)));
+            connect(sender, SIGNAL(SetShortLineVis()), receiver, SLOT(SetShortLineVisEvent()));
         }
         else if(loc2>=3&&loc2<=5) //c
         {
@@ -397,11 +419,14 @@ void MainWindow::CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int lo
     {
         if(loc2==0||loc2==1) //a2/a
         {
-            connect(sender, SIGNAL(SetShortLineVis(float)), receiver, SLOT(SetShortLineVisEvent(float)));
+            connect(sender, SIGNAL(SetShortLineVis()), receiver, SLOT(SetShortLineVisEvent()));
         }
         else if(loc2==2||loc2==7||(loc2>=3&&loc2<=5))//b/topc/c
         {
-            connect(sender, SIGNAL(updateX1b(float)), receiver, SLOT(updateX1Event(float)));
+
+            connect(sender, SIGNAL(updateX1s(float)), receiver, SLOT(updateY1Event(float))); //红色水平线动
+            connect(sender, SIGNAL(updateX2s(float)), receiver, SLOT(updateY2Event(float))); //绿色水平线动
+            connect(sender, SIGNAL(updateX1b(float)), receiver, SLOT(updateX1Event(float)));//红色竖直线动
             connect(sender, SIGNAL(updateX2b(float)), receiver, SLOT(updateX2Event(float)));
             connect(sender, SIGNAL(updateX3(float)), receiver, SLOT(updateX3Event(float)));
         }
@@ -417,13 +442,13 @@ void MainWindow::CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int lo
         {
             connect(sender, SIGNAL(updateY1(float)), receiver, SLOT(updateX1Event(float)));
             connect(sender, SIGNAL(updateY2(float)), receiver, SLOT(updateX2Event(float)));
-            connect(sender, SIGNAL(SetShortLineVis(float)), receiver, SLOT(SetShortLineVisEvent(float)));
+            connect(sender, SIGNAL(SetShortLineVis()), receiver, SLOT(SetShortLineVisEvent()));
         }
         else if(loc2==1) //a
         {
             connect(sender, SIGNAL(updateY1(float)), receiver, SLOT(updateY1Event(float)));
             connect(sender, SIGNAL(updateY2(float)), receiver, SLOT(updateY2Event(float)));
-            connect(sender, SIGNAL(SetShortLineVis(float)), receiver, SLOT(SetShortLineVisEvent(float)));
+            connect(sender, SIGNAL(SetShortLineVis()), receiver, SLOT(SetShortLineVisEvent()));
         }
         else if(loc2==2) //b
         {
@@ -440,7 +465,7 @@ void MainWindow::CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int lo
     {
         if(loc2==0||loc2==1) //a2/a
         {
-            connect(sender, SIGNAL(SetShortLineVis(float)), receiver, SLOT(SetShortLineVisEvent(float)));
+            connect(sender, SIGNAL(SetShortLineVis()), receiver, SLOT(SetShortLineVisEvent()));
         }
         else if(loc2>=3&&loc2<=5) //c
         {
@@ -450,4 +475,35 @@ void MainWindow::CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int lo
         }
     }
 }
-
+void MainWindow::CustomCursorEvent(ThCustomPlot *&cp1, ThCustomPlot *&cp2,ThCustomPlot *&cp3,ThCustomPlot *&cp4,int customlayout,int local1,int local2,int local3,int local4)
+{
+    if(customlayout>=2&&customlayout<=3)
+    {
+        CursorEvent(cp1,cp2,local1,local2);
+        CursorEvent(cp2,cp1,local2,local1);
+    }
+    else if(customlayout>=4&&customlayout<=7)
+    {
+        CursorEvent(cp1,cp2,local1,local2);
+        CursorEvent(cp1,cp3,local1,local3);
+        CursorEvent(cp2,cp1,local2,local1);
+        CursorEvent(cp2,cp3,local2,local3);
+        CursorEvent(cp3,cp1,local3,local1);
+        CursorEvent(cp3,cp2,local3,local2);
+    }
+    else if(customlayout>=8&&customlayout<=11)
+    {
+        CursorEvent(cp1,cp2,local1,local2);
+        CursorEvent(cp1,cp3,local1,local3);
+        CursorEvent(cp1,cp4,local1,local4);
+        CursorEvent(cp2,cp1,local2,local1);
+        CursorEvent(cp2,cp3,local2,local3);
+        CursorEvent(cp2,cp4,local2,local4);
+        CursorEvent(cp3,cp1,local3,local1);
+        CursorEvent(cp3,cp2,local3,local2);
+        CursorEvent(cp3,cp4,local3,local4);
+        CursorEvent(cp4,cp1,local4,local1);
+        CursorEvent(cp4,cp2,local4,local2);
+        CursorEvent(cp4,cp3,local4,local3);
+    }
+}
