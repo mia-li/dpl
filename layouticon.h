@@ -17,6 +17,10 @@ public:
     QRadioButton* rb;
     int index;
     int m_customlayout=1;
+    int local1;
+    int local2;
+    int local3;
+    int local4;
 signals:
 
 private:
@@ -26,10 +30,7 @@ private:
     QLabel* l2;
     QLabel* l3;
     QLabel* l4;
-    int local1;
-    int local2;
-    int local3;
-    int local4;
+
     QString t1;
     QString t2;
     QString t3;

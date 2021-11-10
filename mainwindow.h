@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "qcustomplot.h"
+#include "thcustomplot.h"
 #include "xxwtraceline.h"
 #include "acustomplot.h"
 #include "bcustomplot.h"
@@ -36,8 +37,7 @@ public:
 
     LayoutPage* lay;
 private slots:
-    void on_pushButton_clicked();
-    void CursorEvent( QObject *sender,  QObject *receiver);
+    void CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int loc1,int loc2);
 
     void on_pushButton_2_clicked();
     void layoutData(QString type);

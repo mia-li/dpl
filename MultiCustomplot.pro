@@ -26,6 +26,7 @@ SOURCES += \
     mainwindow.cpp \
     qcustomplot.cpp \
     scustomplot.cpp \
+    thcustomplot.cpp \
     topccustomplot.cpp \
     xxwtraceline.cpp
 
@@ -39,6 +40,7 @@ HEADERS += \
     mainwindow.h \
     qcustomplot.h \
     scustomplot.h \
+    thcustomplot.h \
     topccustomplot.h \
     xxwtraceline.h
 

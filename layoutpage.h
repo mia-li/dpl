@@ -56,10 +56,7 @@ private slots:
 private:
     Ui::LayoutPage *ui;
     int customLayout=1;
-    int local1;
-    int local2;
-    int local3;
-    int local4;
+
     int lx=10,ly=10;
     int layoutNum=0;
     QString IndToString(int index);

@@ -1,6 +1,6 @@
 #include "scustomplot.h"
 
-SCustomPlot::SCustomPlot(QWidget* widget):QCustomPlot(widget)
+SCustomPlot::SCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
 
@@ -145,13 +145,13 @@ void SCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer1->updatePosition(x,y);
         m_lineTracer1->setVisible(true);
-        updateY1(y);
+        emit updateY1(y);
     }
     else
     {
         m_lineTracer2->updatePosition(x,y);
         m_lineTracer2->setVisible(true);
-        updateY2(y);
+        emit updateY2(y);
     }
     clickNum++;
     replot();
@@ -190,7 +190,7 @@ void SCustomPlot::mousePressEvent(QMouseEvent *event)
     }
     else
     {
-        SetShortLineVis();
+        emit SetShortLineVis();
         //m_lineRTracerShort->setVisible(false);
         m_lineTracer1->SelectedH=false;
         m_lineTracer2->SelectedH=false;
@@ -223,22 +223,22 @@ void SCustomPlot::mouseMoveEvent(QMouseEvent *event)
     if(m_lineTracer1->SelectedH)
     {
         m_lineTracer1->updatePositionY(y_val);
-        updateY1(y_val);
+        emit updateY1(y_val);
     }
     else if(m_lineTracer1->SelectedV)
     {
         m_lineTracer1->updatePositionX(x_val);
-        updateY1c(x_val); //s-c 拖竖线 c的横线跟着动
+        emit updateY1c(x_val); //s-c 拖竖线 c的横线跟着动
     }
     else if(m_lineTracer2->SelectedH)
     {
         m_lineTracer2->updatePositionY(y_val);
-        updateY2(y_val);
+        emit updateY2(y_val);
     }
     else if(m_lineTracer2->SelectedV)
     {
         m_lineTracer2->updatePositionX(x_val);
-        updateY2c(x_val);
+        emit updateY2c(x_val);
     }
     else if(m_lineTracerLine->SelectedV)
     {

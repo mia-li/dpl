@@ -3,8 +3,9 @@
 #include <QObject>
 #include "qcustomplot.h"
 #include "xxwtraceline.h"
+#include "thcustomplot.h"
 
-class TopcCustomPlot:public QCustomPlot
+class TopcCustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
@@ -23,10 +24,10 @@ public:
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
 signals:
-    void updateX1(float x_val);
-    void updateX2(float x_val);
-    void updateX3(float x_val);
-    void SetShortLineVis();
+//    void updateX1(float x_val);
+//    void updateX2(float x_val);
+//    void updateX3(float x_val);
+//    void SetShortLineVis();
 public slots:
     void updateX1Event(float x_val);
     void updateX2Event(float x_val);

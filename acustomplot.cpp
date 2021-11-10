@@ -1,9 +1,8 @@
 #include "acustomplot.h"
 
-ACustomPlot::ACustomPlot(QWidget* widget):QCustomPlot(widget)
+ACustomPlot::ACustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
-
 
 }
 void ACustomPlot::Initial()
@@ -77,7 +76,7 @@ void ACustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer1->updatePosition(x,y);
         m_lineTracer1->setVisible(true);
-        updateY1(y);
+        emit updateY1(y);
 //        m_lineRTracer1->updatePositionY(y);
 //        m_lineRTracer1->setVisible(true);
     }
@@ -85,7 +84,7 @@ void ACustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer2->updatePosition(x,y);
         m_lineTracer2->setVisible(true);
-        updateY2(y);
+        emit updateY2(y);
 //        m_lineRTracer2->updatePositionY(y);
 //        m_lineRTracer2->setVisible(true);
     }
@@ -126,7 +125,7 @@ void ACustomPlot::mousePressEvent(QMouseEvent *event)
         {
             m_lineTracerShortLine->setVisible(true);
         }
-        SetDashLineVis();
+        emit SetDashLineVis();
         m_lineTracerShortLine->SelectedLine=true;
     }
     else if(m_lineTracerShortLine->m_visible&&fabs(y_val-m_lineTracerShortLine->getPositionY()+m_lineTracerShortLine->m_size/2.0)<1.0)
@@ -180,7 +179,7 @@ void ACustomPlot::mouseMoveEvent(QMouseEvent *event)
     if(m_lineTracerShortLine->SelectedH)
     {
         m_lineTracerShortLine->updatePositionY(y_val);
-        updateDashY(y_val);
+        emit updateDashY(y_val);
        // m_lineLDashTracer->updatePositionY(y_val);
     }
     else if(m_lineTracerShortLine->SelectedV)
@@ -190,19 +189,19 @@ void ACustomPlot::mouseMoveEvent(QMouseEvent *event)
     else if(m_lineTracerShortLine->SelectedLine)
     {
         m_lineTracerShortLine->updatePosition(x_val,y_val);
-        updateDash(x_val,y_val);
+        emit updateDash(x_val,y_val);
         //m_lineLDashTracer->updatePosition(x_val,y_val);
     }
     else if(m_lineTracerShortLine->SelectedBottom)
     {
         m_lineTracerShortLine->changeSize(y_val);
-        changeDashSize(y_val);
+        emit changeDashSize(y_val);
         //m_lineLDashTracer->changeSize(y_val);
     }
     else if(m_lineTracer1->SelectedH)
     {
         m_lineTracer1->updatePositionY(y_val);
-        updateY1(y_val);
+        emit updateY1(y_val);
     }
     else if(m_lineTracer1->SelectedV)
     {
@@ -211,7 +210,7 @@ void ACustomPlot::mouseMoveEvent(QMouseEvent *event)
     else if(m_lineTracer2->SelectedH)
     {
         m_lineTracer2->updatePositionY(y_val);
-        updateY2(y_val);
+       emit  updateY2(y_val);
     }
     else if(m_lineTracer2->SelectedV)
     {

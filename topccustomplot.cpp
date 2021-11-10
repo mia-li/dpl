@@ -1,6 +1,6 @@
 #include "topccustomplot.h"
 
-TopcCustomPlot::TopcCustomPlot(QWidget* widget):QCustomPlot(widget)
+TopcCustomPlot::TopcCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
 
@@ -151,7 +151,7 @@ void TopcCustomPlot::mousePressEvent(QMouseEvent *event)
     }
     else
     {
-        SetShortLineVis();
+        emit SetShortLineVis();
         m_lineTracerLine1->SelectedV=false;
         m_lineTracerLine2->SelectedV=false;
         m_lineTracerLine3->SelectedV=false;
@@ -177,17 +177,17 @@ void TopcCustomPlot::mouseMoveEvent(QMouseEvent *event)
     if(m_lineTracerLine1->SelectedV)
     {
         m_lineTracerLine1->updatePositionX(x_val);
-        updateX1(x_val);
+        emit updateX1(x_val);
     }
     else if(m_lineTracerLine2->SelectedV)
     {
         m_lineTracerLine2->updatePositionX(x_val);
-        updateX2(x_val);
+        emit updateX2(x_val);
     }
     else if(m_lineTracerLine3->SelectedV)
     {
         m_lineTracerLine3->updatePositionX(x_val);
-        updateX3(x_val);
+        emit updateX3(x_val);
     }
     replot();
 }
