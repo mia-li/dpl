@@ -2,9 +2,10 @@
 #define A2CUSTOMPLOT_H
 #include <QObject>
 #include "qcustomplot.h"
+#include "thcustomplot.h"
 #include "xxwtraceline.h"
 
-class A2CustomPlot:public QCustomPlot
+class A2CustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
@@ -24,15 +25,15 @@ public:
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
 signals:
-    void updateY1(float y_val);
-    void updateY2(float y_val);
-    void SetDashLineVis();
-    void updateDashY(float y_val);
-    void updateDash(float x_val,float y_val);
-    void changeDashSize(float x_val);
+//    void updateY1(float y_val);
+//    void updateY2(float y_val);
+//    void SetDashLineVis();
+//    void updateDashY(float y_val);
+//    void updateDash(float x_val,float y_val);
+//    void changeDashSize(float x_val);
 public slots:
-    void updateX1Event(float y_val);
-    void updateX2Event(float y_val);
+    void updateX1Event(float x_val);
+    void updateX2Event(float x_val);
     void SetShortLineVisEvent();
 };
 

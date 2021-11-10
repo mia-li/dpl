@@ -1,6 +1,6 @@
 #include "bcustomplot.h"
 
-BCustomPlot::BCustomPlot(QWidget* widget):QCustomPlot(widget)
+BCustomPlot::BCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
 
@@ -89,6 +89,7 @@ void BCustomPlot::Initial()
 
 void BCustomPlot::updateY1Event(float y_val)
 {
+    //qDebug("i'm b");
     m_lineTracer1->updatePositionY(y_val);
     m_lineTracer1->setVisible(true);
     this->replot();
@@ -127,15 +128,15 @@ void BCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer1->updatePosition(x,y);
         m_lineTracer1->setVisible(true);
-        updateY1(y);
-        updateX1(x);
+        emit updateY1(y);
+        emit updateX1(x);
     }
     else
     {
         m_lineTracer2->updatePosition(x,y);
         m_lineTracer2->setVisible(true);
-        updateY2(y);
-        updateX2(x);
+        emit updateY2(y);
+        emit updateX2(x);
     }
     clickNum++;
     replot();
@@ -174,7 +175,7 @@ void BCustomPlot::mousePressEvent(QMouseEvent *event)
     }
     else
     {
-        SetShortLineVis();
+        emit SetShortLineVis();
         //m_lineRTracerShort->setVisible(false);
         m_lineTracer1->SelectedH=false;
         m_lineTracer2->SelectedH=false;
@@ -207,27 +208,27 @@ void BCustomPlot::mouseMoveEvent(QMouseEvent *event)
     if(m_lineTracer1->SelectedH)
     {
         m_lineTracer1->updatePositionY(y_val);
-        updateY1(y_val);
+        emit updateY1(y_val);
     }
     else if(m_lineTracer1->SelectedV)
     {
         m_lineTracer1->updatePositionX(x_val);
-        updateX1(x_val);
+        emit updateX1(x_val);
     }
     else if(m_lineTracer2->SelectedH)
     {
         m_lineTracer2->updatePositionY(y_val);
-        updateY2(y_val);
+        emit updateY2(y_val);
     }
     else if(m_lineTracer2->SelectedV)
     {
         m_lineTracer2->updatePositionX(x_val);
-        updateX2(x_val);
+        emit updateX2(x_val);
     }
     else if(m_lineTracerLine->SelectedV)
     {
         m_lineTracerLine->updatePositionX(x_val);
-        updateX3(x_val);
+        emit updateX3(x_val);
     }
     replot();
 }

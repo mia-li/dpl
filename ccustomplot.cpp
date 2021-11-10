@@ -1,6 +1,6 @@
 #include "ccustomplot.h"
 
-CCustomPlot::CCustomPlot(QWidget* widget):QCustomPlot(widget)
+CCustomPlot::CCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
 
@@ -126,8 +126,8 @@ void CCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer1->updatePosition(x,y);
         m_lineTracer1->setVisible(true);
-        updateX1b(x);
-        updateX1s(y);
+        emit updateX1b(x);
+        emit updateX1s(y);
 //        m_lineRTracer1->updatePositionY(y);
 //        m_lineRTracer1->setVisible(true);
     }
@@ -135,8 +135,8 @@ void CCustomPlot::mouseDoubleClickEvent(QMouseEvent* e)
     {
         m_lineTracer2->updatePosition(x,y);
         m_lineTracer2->setVisible(true);
-        updateX2b(x);
-        updateX2s(y);
+        emit updateX2b(x);
+        emit updateX2s(y);
 //        m_lineRTracer2->updatePositionY(y);
 //        m_lineRTracer2->setVisible(true);
     }
@@ -178,7 +178,7 @@ void CCustomPlot::mousePressEvent(QMouseEvent *event)
     else
     {
         //m_lineRTracerShort->setVisible(false);
-        SetShortLineVis();
+        emit SetShortLineVis();
         m_lineTracer1->SelectedH=false;
         m_lineTracer2->SelectedH=false;
         m_lineTracer1->SelectedV=false;
@@ -210,29 +210,29 @@ void CCustomPlot::mouseMoveEvent(QMouseEvent *event)
     if(m_lineTracer1->SelectedH)
     {
         m_lineTracer1->updatePositionY(y_val);
-        updateX1s(y_val);//c-s 拖横线 s竖线跟着动
+        emit updateX1s(y_val);//c-s 拖横线 s竖线跟着动
        // m_lineRTracer1->updatePositionY(y_val);
     }
     else if(m_lineTracer1->SelectedV)
     {
         m_lineTracer1->updatePositionX(x_val);
-        updateX1b(x_val);
+        emit updateX1b(x_val);
     }
     else if(m_lineTracer2->SelectedH)
     {
         m_lineTracer2->updatePositionY(y_val);
-        updateX2s(y_val);
+        emit updateX2s(y_val);
         //m_lineRTracer2->updatePositionY(y_val);
     }
     else if(m_lineTracer2->SelectedV)
     {
         m_lineTracer2->updatePositionX(x_val);
-        updateX2b(x_val);
+        emit updateX2b(x_val);
     }
     else if(m_lineTracerLine->SelectedV)
     {
         m_lineTracerLine->updatePositionX(x_val);
-        updateX3(x_val);
+        emit updateX3(x_val);
     }
     replot();
 }

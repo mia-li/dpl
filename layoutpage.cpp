@@ -200,6 +200,10 @@ void LayoutPage::on_pushButtonback_clicked()
 void LayoutPage::on_pushButtonsure_clicked()
 {
     LayoutIcon* con1;
+    int local1;
+    int local2;
+    int local3;
+    int local4;
     if(customLayout==1)
     {
         if(ui->comboBox1->currentIndex()==0)
@@ -253,7 +257,7 @@ void LayoutPage::on_pushButtonsure_clicked()
         }
 
     }
-    else
+    else if(customLayout>=8&&customLayout<=11)
     {
         if(ui->comboBox1->currentIndex()==0||ui->comboBox2->currentIndex()==0||ui->comboBox3->currentIndex()==0||ui->comboBox4->currentIndex()==0)
         {
@@ -266,7 +270,7 @@ void LayoutPage::on_pushButtonsure_clicked()
             local1=ui->comboBox1->currentIndex();
             local2=ui->comboBox2->currentIndex();
             local3=ui->comboBox3->currentIndex();
-            local4=ui->comboBox3->currentIndex();
+            local4=ui->comboBox4->currentIndex();
             con1=new LayoutIcon(customLayout,ui->page1,local1,local2,local3,local4);
             ui->stackedWidget->setCurrentIndex(0);
         }
@@ -326,7 +330,7 @@ void LayoutPage::on_pushButtonyes_2_clicked()
     {
         if(customButton[i]->rb->isChecked())
         {
-            emit DisplayCustomLayout(customButton[i]->m_customlayout,local1,local2,local3,local4);
+            emit DisplayCustomLayout(customButton[i]->m_customlayout,customButton[i]->local1,customButton[i]->local2,customButton[i]->local3,customButton[i]->local4);
             this->hide();
             break;
         }
