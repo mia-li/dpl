@@ -25,12 +25,6 @@ public:
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
 signals:
-//    void updateY1(float y_val);
-//    void updateY2(float y_val);
-//    void SetDashLineVis();
-//    void updateDashY(float y_val);
-//    void updateDash(float x_val,float y_val);
-//    void changeDashSize(float y_val);
 public slots:
     void updateY1Event(float y_val);
     void updateY2Event(float y_val);

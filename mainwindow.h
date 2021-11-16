@@ -24,7 +24,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void Initial();
-
+    void DeleteWidget(QSplitter *&splitter);
     XxwTraceLine* m_lineRTracer1;
     XxwTraceLine* m_lineRTracer2;
     XxwTraceLine* m_lineRTracerShort;
