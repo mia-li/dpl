@@ -22,6 +22,15 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::DeleteWidget(QSplitter *&splitter)
+{
+    int count=splitter->count();
+    for(int i=0;i<count;i++)
+    {
+        splitter->widget(i)->hide();
+        splitter->widget(i)->deleteLater();
+    }
+}
 void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int local3,int local4)
 {
     ThCustomPlot *cp1;
@@ -29,10 +38,6 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
     ThCustomPlot *cp3;
     ThCustomPlot *cp4;
 
-    qDebug("%d",local1);
-    qDebug("%d",local2);
-    qDebug("%d",local3);
-    qDebug("%d",local4);
     if(local1==1) //自定义布局里的acustomplot 都是a2
         local1=0;
     if(local2==1) //自定义布局里的acustomplot 都是a2
@@ -53,6 +58,11 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc2,cp1,local1);
         InitCustomWidget(ui->splitterc2,cp2,local2);
 
+        ui->splitterc2->widget(0)->hide();
+        ui->splitterc2->widget(0)->deleteLater();
+        ui->splitterc2->widget(1)->hide();
+        ui->splitterc2->widget(1)->deleteLater();
+
         ui->splitterc2->replaceWidget(0,cp1);
         ui->splitterc2->replaceWidget(1,cp2);
     }
@@ -60,6 +70,12 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
     {
         InitCustomWidget(ui->splitterc3,cp1,local1);
         InitCustomWidget(ui->splitterc3,cp2,local2);
+
+        ui->splitterc3->widget(0)->hide();
+        ui->splitterc3->widget(0)->deleteLater();
+        ui->splitterc3->widget(1)->hide();
+        ui->splitterc3->widget(1)->deleteLater();
+
         ui->splitterc3->replaceWidget(0,cp1);
         ui->splitterc3->replaceWidget(1,cp2);
     }
@@ -68,6 +84,14 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc4,cp1,local1);
         InitCustomWidget(ui->splitterc4,cp2,local2);
         InitCustomWidget(ui->splitterc4,cp3,local3);
+
+        ui->splitterc4->widget(0)->hide();
+        ui->splitterc4->widget(0)->deleteLater();
+        ui->splitterc4->widget(1)->hide();
+        ui->splitterc4->widget(1)->deleteLater();
+        ui->splitterc4->widget(2)->hide();
+        ui->splitterc4->widget(2)->deleteLater();
+
         ui->splitterc4->replaceWidget(0,cp1);
         ui->splitterc4->replaceWidget(1,cp2);
         ui->splitterc4->replaceWidget(2,cp3);
@@ -77,6 +101,14 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc5,cp1,local1);
         InitCustomWidget(ui->splitterc5,cp2,local2);
         InitCustomWidget(ui->splitterc5,cp3,local3);
+
+        ui->splitterc5->widget(0)->hide();
+        ui->splitterc5->widget(0)->deleteLater();
+        ui->splitterc5->widget(1)->hide();
+        ui->splitterc5->widget(1)->deleteLater();
+        ui->splitterc5->widget(2)->hide();
+        ui->splitterc5->widget(2)->deleteLater();
+
         ui->splitterc5->replaceWidget(0,cp1);
         ui->splitterc5->replaceWidget(1,cp2);
         ui->splitterc5->replaceWidget(2,cp3);
@@ -87,9 +119,21 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc6h,cp1,local1);
         InitCustomWidget(ui->splitterc6h,cp2,local2);
         InitCustomWidget(ui->splitterc6v,cp3,local3);
-        ui->splitterc6h->replaceWidget(0,cp1);
-        ui->splitterc6h->replaceWidget(1,cp2);
-        ui->splitterc6v->replaceWidget(1,cp3);
+
+        ui->splitterc6h->widget(0)->hide();
+        ui->splitterc6h->widget(0)->deleteLater();
+        ui->splitterc6h->widget(1)->hide();
+        ui->splitterc6h->widget(1)->deleteLater();
+        ui->splitterc6v->widget(1)->hide();
+        ui->splitterc6v->widget(1)->deleteLater();
+
+        ui->splitterc6h->insertWidget(0,cp1);
+        ui->splitterc6h->insertWidget(1,cp2);
+        ui->splitterc6v->insertWidget(1,cp3);
+
+//        ui->splitterc6h->replaceWidget(0,cp1);
+//        ui->splitterc6h->replaceWidget(1,cp2);
+//        ui->splitterc6v->replaceWidget(1,cp3);
 
     }
     else if(customlayout==7)
@@ -97,9 +141,17 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc7v,cp1,local1);
         InitCustomWidget(ui->splitterc7v,cp2,local2);
         InitCustomWidget(ui->splitterc7h,cp3,local3);
-        ui->splitterc7v->replaceWidget(0,cp1);
-        ui->splitterc7v->replaceWidget(1,cp2);
-        ui->splitterc7h->replaceWidget(1,cp3);
+
+        ui->splitterc7v->widget(0)->hide();
+        ui->splitterc7v->widget(0)->deleteLater();
+        ui->splitterc7v->widget(1)->hide();
+        ui->splitterc7v->widget(1)->deleteLater();
+        ui->splitterc7h->widget(1)->hide();
+        ui->splitterc7h->widget(1)->deleteLater();
+
+        ui->splitterc7v->insertWidget(0,cp1);
+        ui->splitterc7v->insertWidget(1,cp2);
+        ui->splitterc7h->insertWidget(1,cp3);
 
     }
     else if(customlayout==8)
@@ -108,22 +160,42 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc8h,cp2,local2);
         InitCustomWidget(ui->splitterc8h,cp3,local3);
         InitCustomWidget(ui->splitterc8v,cp4,local4);
-        ui->splitterc8h->replaceWidget(0,cp1);
-        ui->splitterc8h->replaceWidget(1,cp2);
-        ui->splitterc8h->replaceWidget(2,cp3);
-        ui->splitterc8v->replaceWidget(1,cp4);
+
+        ui->splitterc8h->widget(0)->hide();
+        ui->splitterc8h->widget(0)->deleteLater();
+        ui->splitterc8h->widget(1)->hide();
+        ui->splitterc8h->widget(1)->deleteLater();
+        ui->splitterc8h->widget(2)->hide();
+        ui->splitterc8h->widget(2)->deleteLater();
+        ui->splitterc8v->widget(1)->hide();
+        ui->splitterc8v->widget(1)->deleteLater();
+
+        ui->splitterc8h->insertWidget(0,cp1);
+        ui->splitterc8h->insertWidget(1,cp2);
+        ui->splitterc8h->insertWidget(2,cp3);
+        ui->splitterc8v->insertWidget(1,cp4);
 
     }
-    else if(customlayout==9)
+    else if(customlayout==9)//有问题，再点击会变成a|a_s
     {
         InitCustomWidget(ui->splitterc9v,cp1,local1);
         InitCustomWidget(ui->splitterc9h1,cp2,local2);
         InitCustomWidget(ui->splitterc9h1,cp3,local3);
         InitCustomWidget(ui->splitterc9h2,cp4,local4);
-        ui->splitterc9v->replaceWidget(0,cp1);
-        ui->splitterc9h1->replaceWidget(0,cp2);
-        ui->splitterc9h1->replaceWidget(1,cp3);
-        ui->splitterc9h2->replaceWidget(1,cp4);
+
+        ui->splitterc9v->widget(0)->hide();
+        ui->splitterc9v->widget(0)->deleteLater();
+        ui->splitterc9h1->widget(0)->hide();
+        ui->splitterc9h1->widget(0)->deleteLater();
+        ui->splitterc9h1->widget(1)->hide();
+        ui->splitterc9h1->widget(1)->deleteLater();
+        ui->splitterc9h2->widget(1)->hide();
+        ui->splitterc9h2->widget(1)->deleteLater();
+
+        ui->splitterc9v->insertWidget(0,cp1);
+        ui->splitterc9h1->insertWidget(0,cp2);
+        ui->splitterc9h1->insertWidget(1,cp3);
+        ui->splitterc9h2->insertWidget(1,cp4);
     }
     else if(customlayout==10)
     {
@@ -131,10 +203,20 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc10h,cp2,local2);
         InitCustomWidget(ui->splitterc10v,cp3,local3);
         InitCustomWidget(ui->splitterc10v,cp4,local4);
-        ui->splitterc10h->replaceWidget(0,cp1);
-        ui->splitterc10h->replaceWidget(1,cp2);
-        ui->splitterc10v->replaceWidget(1,cp3);
-        ui->splitterc10v->replaceWidget(2,cp4);
+
+        ui->splitterc10h->widget(0)->hide();
+        ui->splitterc10h->widget(0)->deleteLater();
+        ui->splitterc10h->widget(1)->hide();
+        ui->splitterc10h->widget(1)->deleteLater();
+        ui->splitterc10v->widget(1)->hide();
+        ui->splitterc10v->widget(1)->deleteLater();
+        ui->splitterc10v->widget(2)->hide();
+        ui->splitterc10v->widget(2)->deleteLater();
+
+        ui->splitterc10h->insertWidget(0,cp1);
+        ui->splitterc10h->insertWidget(1,cp2);
+        ui->splitterc10v->insertWidget(1,cp3);
+        ui->splitterc10v->insertWidget(2,cp4);
     }
     else if(customlayout==11)
     {
@@ -143,10 +225,19 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         InitCustomWidget(ui->splitterc11h,cp3,local3);
         InitCustomWidget(ui->splitterc11h,cp4,local4);
 
-        ui->splitterc11v->replaceWidget(0,cp1);
-        ui->splitterc11v->replaceWidget(1,cp2);
-        ui->splitterc11h->replaceWidget(1,cp3);
-        ui->splitterc11h->replaceWidget(2,cp4);
+        ui->splitterc11v->widget(0)->hide();
+        ui->splitterc11v->widget(0)->deleteLater();
+        ui->splitterc11v->widget(1)->hide();
+        ui->splitterc11v->widget(1)->deleteLater();
+        ui->splitterc11h->widget(1)->hide();
+        ui->splitterc11h->widget(1)->deleteLater();
+        ui->splitterc11h->widget(2)->hide();
+        ui->splitterc11h->widget(2)->deleteLater();
+
+        ui->splitterc11v->insertWidget(0,cp1);
+        ui->splitterc11v->insertWidget(1,cp2);
+        ui->splitterc11h->insertWidget(1,cp3);
+        ui->splitterc11h->insertWidget(2,cp4);
     }
 
     CustomCursorEvent(cp1,cp2,cp3,cp4,customlayout,local1,local2,local3,local4);

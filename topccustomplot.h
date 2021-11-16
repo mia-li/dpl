@@ -23,11 +23,7 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
-signals:
-//    void updateX1(float x_val);
-//    void updateX2(float x_val);
-//    void updateX3(float x_val);
-//    void SetShortLineVis();
+signals://signals可以继承父类的
 public slots:
     void updateX1Event(float x_val);
     void updateX2Event(float x_val);
