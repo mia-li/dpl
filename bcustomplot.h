@@ -22,6 +22,7 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
+    //static
 signals:
 public slots:
     void updateY1Event(float y_val);

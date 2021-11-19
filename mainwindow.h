@@ -12,6 +12,7 @@
 #include "topccustomplot.h"
 #include "a2customplot.h"
 #include "layoutpage.h"
+#include "colorbarsetting.h"
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,17 +25,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void Initial();
-    void DeleteWidget(QSplitter *&splitter);
-    XxwTraceLine* m_lineRTracer1;
-    XxwTraceLine* m_lineRTracer2;
-    XxwTraceLine* m_lineRTracerShort;
-
-    XxwTraceLine* m_lineLTracer1;
-    XxwTraceLine* m_lineLTracer2;
-    XxwTraceLine* m_lineLDashTracer;
-    XxwTraceLine* m_lineLStLineTracer;
-    QGraphicsView* graphicsView;
-
+    ColorBarSetting *colorbar;
     LayoutPage* lay;
 private slots:
     void CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int loc1,int loc2);
@@ -43,6 +34,8 @@ private slots:
     void layoutData(QString type);
     void DisplayCustomLayout(int customlayout,int local1,int local2,int local3,int local4);
     void InitCustomWidget(QWidget* widget,ThCustomPlot *&cp,int local);
+
+    void on_pushButton_3_clicked();
 
 private:
 

@@ -223,16 +223,20 @@ void LayoutPage::on_pushButtonsure_clicked()
     }
     else if(customLayout>=2&&customLayout<=3)
     {
-        if(ui->comboBox1->currentIndex()==0||ui->comboBox2->currentIndex()==0)
+        local1=ui->comboBox1->currentIndex();
+        local2=ui->comboBox2->currentIndex();
+        if(local1==0||local2==0)
         {
-            QMessageBox msgBox;
-            msgBox.setText(tr("aaa"));
-            //QMessageBox::information(this,"提示信息","存在没有选择视图的位置");
+
+            //Toast::instance().show(Toast::INFO, "存在没有选择视图的位置");
+        }
+        else if(local1==local2)
+        {
+
+            //Toast::instance().show(Toast::INFO, "组合中视图不能重复");
         }
         else
         {
-            local1=ui->comboBox1->currentIndex();
-            local2=ui->comboBox2->currentIndex();
             con1=new LayoutIcon(customLayout,ui->page1,local1,local2);
 
             ui->stackedWidget->setCurrentIndex(0);

@@ -20,6 +20,7 @@ SOURCES += \
     acustomplot.cpp \
     bcustomplot.cpp \
     ccustomplot.cpp \
+    colorbarsetting.cpp \
     layouticon.cpp \
     layoutpage.cpp \
     main.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     acustomplot.h \
     bcustomplot.h \
     ccustomplot.h \
+    colorbarsetting.h \
     layouticon.h \
     layoutpage.h \
     mainwindow.h \
@@ -45,6 +47,7 @@ HEADERS += \
     xxwtraceline.h
 
 FORMS += \
+    colorbarsetting.ui \
     layoutpage.ui \
     mainwindow.ui
 
