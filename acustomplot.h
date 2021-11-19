@@ -9,7 +9,13 @@ class ACustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
-    explicit ACustomPlot(QWidget* widget);
+    static ACustomPlot* Instance(){
+        if (ACustomPlot::Singleton==nullptr) {
+            ACustomPlot::Singleton = new ACustomPlot;
+        }
+        return ACustomPlot::Singleton;
+    }
+    ACustomPlot(QWidget* widget=nullptr);
 
     void Initial();
     void OthersMouseEvent();
@@ -24,6 +30,8 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
+private:
+    inline static ACustomPlot* Singleton =nullptr;
 signals:
 public slots:
     void updateY1Event(float y_val);

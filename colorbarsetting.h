@@ -12,7 +12,13 @@ class ColorBarSetting : public QWidget
     Q_OBJECT
 
 public:
-    explicit ColorBarSetting(QWidget *parent = nullptr);
+    static ColorBarSetting* Instance(){
+        if (ColorBarSetting::Singleton==nullptr) {
+            ColorBarSetting::Singleton = new ColorBarSetting;
+        }
+        return ColorBarSetting::Singleton;
+    }
+    //explicit ColorBarSetting(QWidget *parent = nullptr);
     ~ColorBarSetting();
     //gpJet==ONDT_Amplitude
     //gpHuge==ONDT_Corrosion
@@ -38,12 +44,14 @@ private slots:
     void setRFType();
 
 signals:
-    void Sscanupdatecolorbar(ColorbarType colorbartype);
-    void Cscanupdatecolorbar(ColorbarType colorbartype);
-    void Bscanupdatecolorbar(ColorbarType colorbartype);
+    void Sscanupdatecolorbar(ColorBarSetting::ColorbarType colorbartype);
+    void Cscanupdatecolorbar(ColorBarSetting::ColorbarType colorbartype);
+    void Bscanupdatecolorbar(ColorBarSetting::ColorbarType colorbartype);
 private:
+    ColorBarSetting(QWidget *parent = nullptr);
     Ui::ColorBarSetting *ui;
     ColorbarType m_type=ONDT_Corrosion;
+    inline static ColorBarSetting* Singleton =nullptr;
 };
 
 #endif // COLORBARSETTING_H

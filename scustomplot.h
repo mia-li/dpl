@@ -8,7 +8,13 @@ class SCustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
-    explicit SCustomPlot(QWidget* widget);
+    static SCustomPlot* Instance(){
+        if (SCustomPlot::Singleton==nullptr) {
+            SCustomPlot::Singleton = new SCustomPlot;
+        }
+        return SCustomPlot::Singleton;
+    }
+    SCustomPlot(QWidget* widget=nullptr);
 
     void Initial();
     void OthersMouseEvent();
@@ -35,6 +41,8 @@ public slots:
     void updateDashYEvent(float y_val);
     void updateDashEvent(float x_val,float y_val);
     void changeDashSizeEvent(float y_val);
+private:
+    inline static SCustomPlot* Singleton =nullptr;
 };
 
 #endif // SCUSTOMPLOT_H

@@ -9,7 +9,13 @@ class TopcCustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
-    explicit TopcCustomPlot(QWidget* widget);
+    static TopcCustomPlot* Instance(){
+        if (TopcCustomPlot::Singleton==nullptr) {
+            TopcCustomPlot::Singleton = new TopcCustomPlot;
+        }
+        return TopcCustomPlot::Singleton;
+    }
+    TopcCustomPlot(QWidget* widget=nullptr);
 
     void Initial();
 
@@ -28,6 +34,8 @@ public slots:
     void updateX1Event(float x_val);
     void updateX2Event(float x_val);
     void updateX3Event(float x_val);
+private:
+    inline static TopcCustomPlot* Singleton =nullptr;
 };
 
 #endif // TopcCustomPlot_H

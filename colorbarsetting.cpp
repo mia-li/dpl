@@ -1,6 +1,7 @@
 #include "colorbarsetting.h"
 #include "ui_colorbarsetting.h"
 #include <QPainter>
+
 ColorBarSetting::ColorBarSetting(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ColorBarSetting)
@@ -86,7 +87,8 @@ void ColorBarSetting::on_pushButton_10_clicked()//c
 
 void ColorBarSetting::on_pushButton_11_clicked()//b
 {
-    emit Bscanupdatecolorbar(m_type);
+
+    Bscanupdatecolorbar(m_type);
 }
 
 

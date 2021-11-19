@@ -1,16 +1,27 @@
 #include "bcustomplot.h"
 
+QCPColorMap* BCustomPlot::colorMap=NULL;
+//QCPColorScale* BCustomPlot::colorScale=NULL;
+QCPColorGradient BCustomPlot::gradient=QCPColorGradient::gpJet;
 BCustomPlot::BCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
-
-
+    //colorbar=ColorBarSetting::Instance();
+    connect(ColorBarSetting::Instance(),SIGNAL(Bscanupdatecolorbar(ColorBarSetting::ColorbarType)),this,SLOT(changeColorbar(ColorBarSetting::ColorbarType)));
+}
+BCustomPlot::~BCustomPlot()
+{
+//    if(NULL!=colorMap)
+//    {
+//        delete colorMap;
+//        colorMap=NULL;
+//    }
 }
 void BCustomPlot::Initial()
 {
     //坐标轴样式设计
     setBackground(Qt::darkGray); // 设置背景颜色
-    axisRect()->setBackground(Qt::white);   // 设置QCPAxisRect背景颜色
+    axisRect()->setBackground(Qt::black);   // 设置QCPAxisRect背景颜色
 
     xAxis->setRange(0, 0.65);
     yAxis->setRange(0, 50);
@@ -32,14 +43,19 @@ void BCustomPlot::Initial()
     yAxis->setSubTickLengthOut(5);
 
 //色标
-    QCPColorMap *colorMap = new QCPColorMap(xAxis, yAxis);
+    if(NULL==colorMap)
+    {
+        colorMap = new QCPColorMap(xAxis, yAxis);
+    }
     colorMap->data()->setRange(QCPRange(0,0.65), QCPRange(0, 50));
-    QCPColorScale *colorScale = new QCPColorScale(this);
+//    if(NULL==colorScale)
+//    {
+//        colorScale = new QCPColorScale(this);
+//    }
+    //添加色标
+    QCPColorScale* colorScale = new QCPColorScale(this);
     colorScale->setBarWidth(11);
     colorScale->setDataRange(QCPRange(0, 100));
-//    colorScale->axis()->setTickLabels(false);
-//    colorScale->axis()->setTickLabelFont(QFont(("Arial"),10));
-//    colorScale->axis()->setLabelFont(QFont(("Arial"), 10));
     colorScale->axis()->setBasePen(QPen(Qt::white, 2));
     colorScale->axis()->setTickPen(QPen(Qt::white, 2));
     colorScale->axis()->setSubTickPen(QPen(Qt::white, 2));
@@ -49,16 +65,16 @@ void BCustomPlot::Initial()
     colorScale->axis()->setSubTickLengthIn(0);
     colorScale->axis()->setSubTickLengthOut(5);
 
-//    colorScale->axis()
     plotLayout()->addElement(0, 1, colorScale); // add it to the right of the main axis rect
     colorScale->setType(QCPAxis::atRight); // scale shall be vertical bar with tick/axis labels right (actually atRight is already the default)
+    //将色标和颜色图关联起来，颜色图什么颜色，色标就是什么颜色
     colorMap->setColorScale(colorScale);
 
     //设置色条的颜色变化
     //gpHuge==ONDT_Corrosion
     //gpGrayscale == ONDT_RFTOFD
     //gpJet==ONDT_Amplitude
-    QCPColorGradient gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
+    //QCPColorGradient gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
     colorMap->setGradient(gradient);
     // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
     colorMap->rescaleDataRange();
@@ -86,7 +102,38 @@ void BCustomPlot::Initial()
     rescaleAxes();//自适应大小
     replot();
 }
+void BCustomPlot::changeColorbar(ColorBarSetting::ColorbarType colorbartype)
+{
+    BCustomPlot::updateColorbar(colorbartype);
+    this->replot();
+}
+void BCustomPlot::updateColorbar(ColorBarSetting::ColorbarType colorbartype)
+{
+//    colorScale->setType(QCPAxis::atRight); // scale shall be vertical bar with tick/axis labels right (actually atRight is already the default)
+//    colorMap->setColorScale(colorScale);
+    //设置色条的颜色变化
+    //gpHuge==ONDT_Corrosion
+    //gpGrayscale == ONDT_RFTOFD
+    //gpJet==ONDT_Amplitude
 
+
+    if(colorbartype==ColorBarSetting::ColorbarType::ONDT_Amplitude)
+    {
+        gradient=QCPColorGradient::gpJet;
+    }
+    else if(colorbartype==ColorBarSetting::ColorbarType::ONDT_Corrosion)
+    {
+        gradient=QCPColorGradient::gpHues;
+    }
+    else
+    {
+        gradient=QCPColorGradient::gpGrayscale;
+    }
+    colorMap->setGradient(gradient);
+    // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
+    colorMap->rescaleDataRange();
+
+}
 void BCustomPlot::updateY1Event(float y_val)
 {
     qDebug("i'm b");

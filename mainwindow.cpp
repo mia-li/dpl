@@ -9,8 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     Initial();
     lay=new LayoutPage();
+    colorbar=ColorBarSetting::Instance();
     connect(lay,SIGNAL(sendLayoutData(QString)),this,SLOT(layoutData(QString)));
     connect(lay,SIGNAL(DisplayCustomLayout(int ,int ,int ,int ,int )),this,SLOT(DisplayCustomLayout(int ,int ,int ,int ,int )));
+    //connect(colorbar,SIGNAL(Bscanupdatecolorbar(ColorBarSetting::ColorbarType)),this,SLOT(changeColorbar(ColorBarSetting::ColorbarType)));
 
 }
 void MainWindow::Initial()
@@ -594,7 +596,7 @@ void MainWindow::CustomCursorEvent(ThCustomPlot *&cp1, ThCustomPlot *&cp2,ThCust
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    colorbar=new ColorBarSetting();
+
     colorbar->show();
 }
 
