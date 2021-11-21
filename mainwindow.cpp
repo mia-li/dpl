@@ -9,11 +9,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     Initial();
     lay=new LayoutPage();
+    colorbar=ColorBarSetting::Instance();
     connect(lay,SIGNAL(sendLayoutData(QString)),this,SLOT(layoutData(QString)));
     connect(lay,SIGNAL(DisplayCustomLayout(int ,int ,int ,int ,int )),this,SLOT(DisplayCustomLayout(int ,int ,int ,int ,int )));
+    //connect(colorbar,SIGNAL(Bscanupdatecolorbar(ColorBarSetting::ColorbarType)),this,SLOT(changeColorbar(ColorBarSetting::ColorbarType)));
+
 }
 void MainWindow::Initial()
 {
+
 
 }
 
@@ -22,15 +26,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::DeleteWidget(QSplitter *&splitter)
-{
-    int count=splitter->count();
-    for(int i=0;i<count;i++)
-    {
-        splitter->widget(i)->hide();
-        splitter->widget(i)->deleteLater();
-    }
-}
+//自定义11种布局
 void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int local3,int local4)
 {
     ThCustomPlot *cp1;
@@ -131,9 +127,6 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         ui->splitterc6h->insertWidget(1,cp2);
         ui->splitterc6v->insertWidget(1,cp3);
 
-//        ui->splitterc6h->replaceWidget(0,cp1);
-//        ui->splitterc6h->replaceWidget(1,cp2);
-//        ui->splitterc6v->replaceWidget(1,cp3);
 
     }
     else if(customlayout==7)
@@ -152,6 +145,8 @@ void MainWindow::DisplayCustomLayout(int customlayout,int local1,int local2,int 
         ui->splitterc7v->insertWidget(0,cp1);
         ui->splitterc7v->insertWidget(1,cp2);
         ui->splitterc7h->insertWidget(1,cp3);
+
+
 
     }
     else if(customlayout==8)
@@ -598,3 +593,10 @@ void MainWindow::CustomCursorEvent(ThCustomPlot *&cp1, ThCustomPlot *&cp2,ThCust
         CursorEvent(cp4,cp3,local4,local3);
     }
 }
+
+void MainWindow::on_pushButton_3_clicked()
+{
+
+    colorbar->show();
+}
+

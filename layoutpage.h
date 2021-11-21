@@ -4,6 +4,7 @@
 #include <QWizardPage>
 #include "layouticon.h"
 
+
 namespace Ui {
 class LayoutPage;
 }

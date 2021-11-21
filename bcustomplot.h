@@ -4,12 +4,19 @@
 #include "qcustomplot.h"
 #include "xxwtraceline.h"
 #include "thcustomplot.h"
+#include "colorbarsetting.h"
 class BCustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
-    explicit BCustomPlot(QWidget* widget);
-
+    static BCustomPlot* Instance(){
+        if (BCustomPlot::Singleton==nullptr) {
+            BCustomPlot::Singleton = new BCustomPlot;
+        }
+        return BCustomPlot::Singleton;
+    }
+    BCustomPlot(QWidget* widget=nullptr);
+    ~BCustomPlot();
     void Initial();
 
     int clickNum = 0;
@@ -22,6 +29,11 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
+
+    static void updateColorbar(ColorBarSetting::ColorbarType colorbartype);
+    static QCPColorMap *colorMap;
+    static QCPColorGradient gradient;
+    //static QCPColorScale *colorScale;
 signals:
 public slots:
     void updateY1Event(float y_val);
@@ -29,6 +41,10 @@ public slots:
     void updateX1Event(float x_val);
     void updateX2Event(float x_val);
     void updateX3Event(float x_val);
+    void changeColorbar(ColorBarSetting::ColorbarType colorbartype);
+
+private:
+    inline static BCustomPlot* Singleton =nullptr;
 };
 
 #endif // BCustomPlot_H

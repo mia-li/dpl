@@ -9,7 +9,13 @@ class A2CustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
-    explicit A2CustomPlot(QWidget* widget);
+    static A2CustomPlot* Instance(){
+        if (A2CustomPlot::Singleton==nullptr) {
+            A2CustomPlot::Singleton = new A2CustomPlot;
+        }
+        return A2CustomPlot::Singleton;
+    }
+    A2CustomPlot(QWidget* widget=nullptr);
 
     void Initial();
     void OthersMouseEvent();
@@ -24,6 +30,8 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
+private:
+    inline static A2CustomPlot* Singleton =nullptr;
 signals:
 public slots:
     void updateX1Event(float x_val);

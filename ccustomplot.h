@@ -8,7 +8,13 @@ class CCustomPlot:public ThCustomPlot
 {
     Q_OBJECT
 public:
-    explicit CCustomPlot(QWidget* widget);
+    static CCustomPlot* Instance(){
+        if (CCustomPlot::Singleton==nullptr) {
+            CCustomPlot::Singleton = new CCustomPlot;
+        }
+        return CCustomPlot::Singleton;
+    }
+    CCustomPlot(QWidget* widget=nullptr);
 
     void Initial();
     void OthersMouseEvent();
@@ -30,6 +36,8 @@ public slots:
     void updateX1Event(float x_val);
     void updateX2Event(float x_val);
     void updateX3Event(float x_val);
+private:
+    inline static CCustomPlot* Singleton =nullptr;
 };
 
 #endif // CCustomPlot_H

@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>12</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="A2CustomPlot" name="widget" native="true">
@@ -42,10 +42,10 @@
      <widget class="QSplitter" name="splitter_2">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>10</y>
-        <width>1241</width>
-        <height>661</height>
+        <x>70</x>
+        <y>0</y>
+        <width>951</width>
+        <height>601</height>
        </rect>
       </property>
       <property name="orientation">
@@ -667,6 +667,19 @@
     </property>
     <property name="text">
      <string>布局</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>580</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>色块</string>
     </property>
    </widget>
   </widget>
