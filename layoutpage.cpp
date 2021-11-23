@@ -208,9 +208,8 @@ void LayoutPage::on_pushButtonsure_clicked()
     {
         if(ui->comboBox1->currentIndex()==0)
         {
-            QMessageBox msgBox;
-            msgBox.setText(tr("aaa"));
-            //QMessageBox::information(this,"提示信息","存在没有选择视图的位置");
+            QMessageBox::information(NULL, "information", "There is no view selected");
+            return;
         }
         else
         {
@@ -227,13 +226,14 @@ void LayoutPage::on_pushButtonsure_clicked()
         local2=ui->comboBox2->currentIndex();
         if(local1==0||local2==0)
         {
-
-            //Toast::instance().show(Toast::INFO, "存在没有选择视图的位置");
+            QMessageBox::information(NULL, "information", "There is no view selected");
+            return;
         }
         else if(local1==local2)
         {
 
-            //Toast::instance().show(Toast::INFO, "组合中视图不能重复");
+            QMessageBox::information(NULL, "information", "View can't duplicate");
+            return;
         }
         else
         {
@@ -244,17 +244,22 @@ void LayoutPage::on_pushButtonsure_clicked()
     }
     else if(customLayout>=4&&customLayout<=7)
     {
-        if(ui->comboBox1->currentIndex()==0||ui->comboBox2->currentIndex()==0||ui->comboBox3->currentIndex()==0)
+        local1=ui->comboBox1->currentIndex();
+        local2=ui->comboBox2->currentIndex();
+        local3=ui->comboBox3->currentIndex();
+        if(local1==0||local2==0||local3==0)
         {
-            QMessageBox msgBox;
-            msgBox.setText(tr("aaa"));
-            //QMessageBox::information(this,"提示信息","存在没有选择视图的位置");
+            QMessageBox::information(NULL, "information", "There is no view selected");
+            return;
+        }
+        else if(local1==local2||local1==local3||local2==local3)
+        {
+            QMessageBox::information(NULL, "information", "View can't duplicate");
+            return;
         }
         else
         {
-            local1=ui->comboBox1->currentIndex();
-            local2=ui->comboBox2->currentIndex();
-            local3=ui->comboBox3->currentIndex();
+
             con1=new LayoutIcon(customLayout,ui->page1,local1,local2,local3);
 
             ui->stackedWidget->setCurrentIndex(0);
@@ -263,18 +268,23 @@ void LayoutPage::on_pushButtonsure_clicked()
     }
     else if(customLayout>=8&&customLayout<=11)
     {
-        if(ui->comboBox1->currentIndex()==0||ui->comboBox2->currentIndex()==0||ui->comboBox3->currentIndex()==0||ui->comboBox4->currentIndex()==0)
+        local1=ui->comboBox1->currentIndex();
+        local2=ui->comboBox2->currentIndex();
+        local3=ui->comboBox3->currentIndex();
+        local4=ui->comboBox4->currentIndex();
+        if(local1==0||local2==0||local3==0||local4==0)
         {
-            //QMessageBox messageBox(QMessageBox::NoIcon,"提示信息", "存在没有选择视图的位置",NULL);
-            //messageBox.exec();
-            //QMessageBox::information(NULL, "提示信息", "存在没有选择视图的位置");
+
+            QMessageBox::information(NULL, "information", "There is no view selected");
+            return;
+        }
+        else if(local1==local2||local1==local3||local1==local4||local2==local3||local2==local4||local3==local4)
+        {
+            QMessageBox::information(NULL, "information", "View can't duplicate");
+            return;
         }
         else
         {
-            local1=ui->comboBox1->currentIndex();
-            local2=ui->comboBox2->currentIndex();
-            local3=ui->comboBox3->currentIndex();
-            local4=ui->comboBox4->currentIndex();
             con1=new LayoutIcon(customLayout,ui->page1,local1,local2,local3,local4);
             ui->stackedWidget->setCurrentIndex(0);
         }
