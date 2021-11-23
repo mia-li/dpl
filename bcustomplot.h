@@ -30,10 +30,9 @@ public:
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
 
-    static void updateColorbar(ColorBarSetting::ColorbarType colorbartype);
-    static QCPColorMap *colorMap;
-    static QCPColorGradient gradient;
-    //static QCPColorScale *colorScale;
+    QCPColorMap *colorMap;
+    QCPColorGradient gradient;
+    QCPColorScale *colorScale;
 signals:
 public slots:
     void updateY1Event(float y_val);

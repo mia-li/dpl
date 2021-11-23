@@ -24,18 +24,23 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>21</number>
     </property>
     <widget class="QWidget" name="page1">
-     <widget class="A2CustomPlot" name="widget" native="true">
+     <widget class="QSplitter" name="splitter_31">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>1251</width>
-        <height>631</height>
+        <x>50</x>
+        <y>20</y>
+        <width>901</width>
+        <height>541</height>
        </rect>
       </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="widget_35" native="true"/>
+      <widget class="QWidget" name="widget" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page2">
@@ -51,8 +56,8 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="A2CustomPlot" name="widget2a" native="true"/>
-      <widget class="BCustomPlot" name="widget2b" native="true"/>
+      <widget class="QWidget" name="widget2a" native="true"/>
+      <widget class="QWidget" name="widget2b" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page3">
@@ -68,20 +73,25 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="BCustomPlot" name="widget3b" native="true"/>
-      <widget class="ACustomPlot" name="widget3a" native="true"/>
+      <widget class="QWidget" name="widget3b" native="true"/>
+      <widget class="QWidget" name="widget3a" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page4">
-     <widget class="SCustomPlot" name="widget4s" native="true">
+     <widget class="QSplitter" name="splitter_32">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>40</x>
         <y>10</y>
-        <width>1221</width>
-        <height>631</height>
+        <width>1071</width>
+        <height>601</height>
        </rect>
       </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="widget_36" native="true"/>
+      <widget class="QWidget" name="widget4s" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page5">
@@ -97,8 +107,8 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="SCustomPlot" name="widget5s" native="true"/>
-      <widget class="A2CustomPlot" name="widget5a" native="true"/>
+      <widget class="QWidget" name="widget5s" native="true"/>
+      <widget class="QWidget" name="widget5a" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page6">
@@ -114,8 +124,8 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="SCustomPlot" name="widget6s" native="true"/>
-      <widget class="ACustomPlot" name="widget6a" native="true"/>
+      <widget class="QWidget" name="widget6s" native="true"/>
+      <widget class="QWidget" name="widget6a" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page7">
@@ -131,9 +141,9 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="SCustomPlot" name="widget7s" native="true"/>
-      <widget class="ACustomPlot" name="widget7a" native="true"/>
-      <widget class="BCustomPlot" name="widget7b" native="true"/>
+      <widget class="QWidget" name="widget7s" native="true"/>
+      <widget class="QWidget" name="widget7a" native="true"/>
+      <widget class="QWidget" name="widget7b" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page8">
@@ -149,9 +159,9 @@
       <property name="orientation">
        <enum>Qt::Vertical</enum>
       </property>
-      <widget class="SCustomPlot" name="widget8s" native="true"/>
-      <widget class="A2CustomPlot" name="widget8a" native="true"/>
-      <widget class="CCustomPlot" name="widget8c" native="true"/>
+      <widget class="QWidget" name="widget8s" native="true"/>
+      <widget class="QWidget" name="widget8a" native="true"/>
+      <widget class="QWidget" name="widget8c" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page9">
@@ -171,10 +181,10 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="SCustomPlot" name="widget9s" native="true"/>
-       <widget class="BCustomPlot" name="widget9b" native="true"/>
+       <widget class="QWidget" name="widget9s" native="true"/>
+       <widget class="QWidget" name="widget9b" native="true"/>
       </widget>
-      <widget class="ACustomPlot" name="widget9a" native="true"/>
+      <widget class="QWidget" name="widget9a" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page10">
@@ -194,10 +204,10 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="SCustomPlot" name="widget10s" native="true"/>
-       <widget class="A2CustomPlot" name="widget10a" native="true"/>
+       <widget class="QWidget" name="widget10s" native="true"/>
+       <widget class="QWidget" name="widget10a" native="true"/>
       </widget>
-      <widget class="BCustomPlot" name="widget10b" native="true"/>
+      <widget class="QWidget" name="widget10b" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page11">
@@ -217,11 +227,11 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="SCustomPlot" name="widget11s" native="true"/>
-       <widget class="BCustomPlot" name="widget11b" native="true"/>
-       <widget class="CCustomPlot" name="widget11c" native="true"/>
+       <widget class="QWidget" name="widget11s" native="true"/>
+       <widget class="QWidget" name="widget11b" native="true"/>
+       <widget class="QWidget" name="widget11c" native="true"/>
       </widget>
-      <widget class="ACustomPlot" name="widget11a" native="true"/>
+      <widget class="QWidget" name="widget11a" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page12">
@@ -241,16 +251,16 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <widget class="SCustomPlot" name="widget12s" native="true"/>
+       <widget class="QWidget" name="widget12s" native="true"/>
        <widget class="QSplitter" name="splitter_13">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
-        <widget class="A2CustomPlot" name="widget12a" native="true"/>
-        <widget class="BCustomPlot" name="widget12b" native="true"/>
+        <widget class="QWidget" name="widget12a" native="true"/>
+        <widget class="QWidget" name="widget12b" native="true"/>
        </widget>
       </widget>
-      <widget class="CCustomPlot" name="widget12c" native="true"/>
+      <widget class="QWidget" name="widget12c" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page13">
@@ -270,11 +280,11 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="SCustomPlot" name="widget13s" native="true"/>
-       <widget class="A2CustomPlot" name="widget13a" native="true"/>
-       <widget class="BCustomPlot" name="widget13b" native="true"/>
+       <widget class="QWidget" name="widget13s" native="true"/>
+       <widget class="QWidget" name="widget13a" native="true"/>
+       <widget class="QWidget" name="widget13b" native="true"/>
       </widget>
-      <widget class="CCustomPlot" name="widget13c" native="true"/>
+      <widget class="QWidget" name="widget13c" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page14">
@@ -294,10 +304,10 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="SCustomPlot" name="widget14s" native="true"/>
-       <widget class="CCustomPlot" name="widget14c" native="true"/>
+       <widget class="QWidget" name="widget14s" native="true"/>
+       <widget class="QWidget" name="widget14c" native="true"/>
       </widget>
-      <widget class="ACustomPlot" name="widget14a" native="true"/>
+      <widget class="QWidget" name="widget14a" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page15">
@@ -317,10 +327,10 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="SCustomPlot" name="widget15s" native="true"/>
-       <widget class="A2CustomPlot" name="widget15a" native="true"/>
+       <widget class="QWidget" name="widget15s" native="true"/>
+       <widget class="QWidget" name="widget15a" native="true"/>
       </widget>
-      <widget class="CCustomPlot" name="widget15c" native="true"/>
+      <widget class="QWidget" name="widget15c" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page16">
@@ -340,11 +350,11 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="SCustomPlot" name="widget16s" native="true"/>
-       <widget class="CCustomPlot" name="widget16c" native="true"/>
-       <widget class="TopcCustomPlot" name="widget16topc" native="true"/>
+       <widget class="QWidget" name="widget16s" native="true"/>
+       <widget class="QWidget" name="widget16c" native="true"/>
+       <widget class="QWidget" name="widget16topc" native="true"/>
       </widget>
-      <widget class="ACustomPlot" name="widget16a" native="true"/>
+      <widget class="QWidget" name="widget16a" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page17">
@@ -364,16 +374,16 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="CCustomPlot" name="widget17c1" native="true"/>
-       <widget class="CCustomPlot" name="widget17c2" native="true"/>
-       <widget class="CCustomPlot" name="widget17c3" native="true"/>
+       <widget class="QWidget" name="widget17c1" native="true"/>
+       <widget class="QWidget" name="widget17c2" native="true"/>
+       <widget class="QWidget" name="widget17c3" native="true"/>
       </widget>
       <widget class="QSplitter" name="splitter_23">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="A2CustomPlot" name="widget17a" native="true"/>
-       <widget class="SCustomPlot" name="widget17s" native="true"/>
+       <widget class="QWidget" name="widget17a" native="true"/>
+       <widget class="QWidget" name="widget17s" native="true"/>
       </widget>
      </widget>
     </widget>
@@ -394,11 +404,11 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <widget class="SCustomPlot" name="widget18s" native="true"/>
-       <widget class="ACustomPlot" name="widget18a" native="true"/>
+       <widget class="QWidget" name="widget18s" native="true"/>
+       <widget class="QWidget" name="widget18a" native="true"/>
       </widget>
-      <widget class="CCustomPlot" name="widget18c" native="true"/>
-      <widget class="BCustomPlot" name="widget18b" native="true"/>
+      <widget class="QWidget" name="widget18c" native="true"/>
+      <widget class="QWidget" name="widget18b" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page19">
@@ -418,24 +428,29 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <widget class="SCustomPlot" name="widget19s" native="true"/>
-       <widget class="ACustomPlot" name="widget19a" native="true"/>
+       <widget class="QWidget" name="widget19s" native="true"/>
+       <widget class="QWidget" name="widget19a" native="true"/>
       </widget>
-      <widget class="CCustomPlot" name="widget19c" native="true"/>
+      <widget class="QWidget" name="widget19c" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="page20"/>
     <widget class="QWidget" name="page21"/>
     <widget class="QWidget" name="pagec1">
-     <widget class="QWidget" name="widget_2" native="true">
+     <widget class="QSplitter" name="splitter_33">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>-20</x>
         <y>20</y>
-        <width>1161</width>
-        <height>681</height>
+        <width>1101</width>
+        <height>581</height>
        </rect>
       </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="widget_37" native="true"/>
+      <widget class="QWidget" name="widget_2" native="true"/>
      </widget>
     </widget>
     <widget class="QWidget" name="pagec2">
@@ -684,44 +699,6 @@
    </widget>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>SCustomPlot</class>
-   <extends>QWidget</extends>
-   <header>scustomplot.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ACustomPlot</class>
-   <extends>QWidget</extends>
-   <header>acustomplot.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>BCustomPlot</class>
-   <extends>QWidget</extends>
-   <header>bcustomplot.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>CCustomPlot</class>
-   <extends>QWidget</extends>
-   <header>ccustomplot.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>TopcCustomPlot</class>
-   <extends>QWidget</extends>
-   <header>topccustomplot.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>A2CustomPlot</class>
-   <extends>QWidget</extends>
-   <header>a2customplot.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

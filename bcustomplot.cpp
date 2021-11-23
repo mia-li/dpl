@@ -1,8 +1,5 @@
 #include "bcustomplot.h"
 
-QCPColorMap* BCustomPlot::colorMap=NULL;
-//QCPColorScale* BCustomPlot::colorScale=NULL;
-QCPColorGradient BCustomPlot::gradient=QCPColorGradient::gpJet;
 BCustomPlot::BCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
@@ -11,11 +8,7 @@ BCustomPlot::BCustomPlot(QWidget* widget):ThCustomPlot(widget)
 }
 BCustomPlot::~BCustomPlot()
 {
-//    if(NULL!=colorMap)
-//    {
-//        delete colorMap;
-//        colorMap=NULL;
-//    }
+
 }
 void BCustomPlot::Initial()
 {
@@ -43,17 +36,12 @@ void BCustomPlot::Initial()
     yAxis->setSubTickLengthOut(5);
 
 //色标
-    if(NULL==colorMap)
-    {
-        colorMap = new QCPColorMap(xAxis, yAxis);
-    }
+    colorMap = new QCPColorMap(xAxis, yAxis);
+
     colorMap->data()->setRange(QCPRange(0,0.65), QCPRange(0, 50));
-//    if(NULL==colorScale)
-//    {
-//        colorScale = new QCPColorScale(this);
-//    }
+
     //添加色标
-    QCPColorScale* colorScale = new QCPColorScale(this);
+    colorScale = new QCPColorScale(this);
     colorScale->setBarWidth(11);
     colorScale->setDataRange(QCPRange(0, 100));
     colorScale->axis()->setBasePen(QPen(Qt::white, 2));
@@ -74,7 +62,7 @@ void BCustomPlot::Initial()
     //gpHuge==ONDT_Corrosion
     //gpGrayscale == ONDT_RFTOFD
     //gpJet==ONDT_Amplitude
-    //QCPColorGradient gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
+    gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
     colorMap->setGradient(gradient);
     // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
     colorMap->rescaleDataRange();
@@ -104,13 +92,6 @@ void BCustomPlot::Initial()
 }
 void BCustomPlot::changeColorbar(ColorBarSetting::ColorbarType colorbartype)
 {
-    BCustomPlot::updateColorbar(colorbartype);
-    this->replot();
-}
-void BCustomPlot::updateColorbar(ColorBarSetting::ColorbarType colorbartype)
-{
-//    colorScale->setType(QCPAxis::atRight); // scale shall be vertical bar with tick/axis labels right (actually atRight is already the default)
-//    colorMap->setColorScale(colorScale);
     //设置色条的颜色变化
     //gpHuge==ONDT_Corrosion
     //gpGrayscale == ONDT_RFTOFD
@@ -132,8 +113,9 @@ void BCustomPlot::updateColorbar(ColorBarSetting::ColorbarType colorbartype)
     colorMap->setGradient(gradient);
     // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
     colorMap->rescaleDataRange();
-
+    this->replot();
 }
+
 void BCustomPlot::updateY1Event(float y_val)
 {
     qDebug("i'm b");
