@@ -3,6 +3,7 @@
 CCustomPlot::CCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
+    connect(ColorBarSetting::Instance(),SIGNAL(Cscanupdatecolorbar(ColorBarSetting::ColorbarType)),this,SLOT(changeColorbar(ColorBarSetting::ColorbarType)));
 
 
 }
@@ -32,9 +33,9 @@ void CCustomPlot::Initial()
     yAxis->setSubTickLengthOut(5);
 
 //色标
-    QCPColorMap *colorMap = new QCPColorMap(xAxis, yAxis);
+    colorMap = new QCPColorMap(xAxis, yAxis);
     colorMap->data()->setRange(QCPRange(0, 0.65), QCPRange(0, 7));
-    QCPColorScale *colorScale = new QCPColorScale(this);
+    colorScale = new QCPColorScale(this);
     colorScale->setBarWidth(11);
     colorScale->setDataRange(QCPRange(0, 100));
 //    colorScale->axis()->setTickLabels(false);
@@ -58,7 +59,7 @@ void CCustomPlot::Initial()
     //gpHuge==ONDT_Corrosion
     //gpGrayscale == ONDT_RFTOFD
     //gpJet==ONDT_Amplitude
-    QCPColorGradient gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
+    gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
     colorMap->setGradient(gradient);
     // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
     colorMap->rescaleDataRange();
@@ -85,6 +86,31 @@ void CCustomPlot::Initial()
    //立即刷新
     rescaleAxes();//自适应大小
     replot();
+}
+void CCustomPlot::changeColorbar(ColorBarSetting::ColorbarType colorbartype)
+{
+    //设置色条的颜色变化
+    //gpHuge==ONDT_Corrosion
+    //gpGrayscale == ONDT_RFTOFD
+    //gpJet==ONDT_Amplitude
+
+
+    if(colorbartype==ColorBarSetting::ColorbarType::ONDT_Amplitude)
+    {
+        gradient=QCPColorGradient::gpJet;
+    }
+    else if(colorbartype==ColorBarSetting::ColorbarType::ONDT_Corrosion)
+    {
+        gradient=QCPColorGradient::gpHues;
+    }
+    else
+    {
+        gradient=QCPColorGradient::gpGrayscale;
+    }
+    colorMap->setGradient(gradient);
+    // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
+    colorMap->rescaleDataRange();
+    this->replot();
 }
 void CCustomPlot::updateY1Event(float y_val)
 {

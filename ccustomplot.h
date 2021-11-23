@@ -4,6 +4,7 @@
 #include "qcustomplot.h"
 #include "xxwtraceline.h"
 #include "thcustomplot.h"
+#include "colorbarsetting.h"
 class CCustomPlot:public ThCustomPlot
 {
     Q_OBJECT
@@ -29,6 +30,9 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event) ;
     void mouseReleaseEvent(QMouseEvent *event);
+    QCPColorMap *colorMap;
+    QCPColorGradient gradient;
+    QCPColorScale *colorScale;
 signals:
 public slots:
     void updateY1Event(float y_val);
@@ -36,6 +40,7 @@ public slots:
     void updateX1Event(float x_val);
     void updateX2Event(float x_val);
     void updateX3Event(float x_val);
+    void changeColorbar(ColorBarSetting::ColorbarType colorbartype);
 private:
     inline static CCustomPlot* Singleton =nullptr;
 };

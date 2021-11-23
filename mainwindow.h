@@ -28,16 +28,22 @@ public:
     ColorBarSetting *colorbar;
     LayoutPage* lay;
 private slots:
-    void CursorEvent(ThCustomPlot *sender, ThCustomPlot *receiver,int loc1,int loc2);
-    void CustomCursorEvent(ThCustomPlot *&cp1, ThCustomPlot *&cp2,ThCustomPlot *&cp3,ThCustomPlot *&cp4,int customlayout,int local1,int local2,int local3,int local4);
+    void InitialPlot();
     void on_pushButton_2_clicked();
     void layoutData(QString type);
     void DisplayCustomLayout(int customlayout,int local1,int local2,int local3,int local4);
-    void InitCustomWidget(QWidget* widget,ThCustomPlot *&cp,int local);
-
+    void CustomWidget(QSplitter *&splitter,int index,int local);
     void on_pushButton_3_clicked();
 
 private:
+    ThCustomPlot *aplot;
+    ThCustomPlot *a2plot;
+    ThCustomPlot *bplot;
+    ThCustomPlot *c1plot;
+    ThCustomPlot *c2plot;
+    ThCustomPlot *c3plot;
+    ThCustomPlot *splot;
+    ThCustomPlot *topcplot;
 
     Ui::MainWindow *ui;
 };

@@ -3,6 +3,7 @@
 SCustomPlot::SCustomPlot(QWidget* widget):ThCustomPlot(widget)
 {
     Initial();
+    connect(ColorBarSetting::Instance(),SIGNAL(Sscanupdatecolorbar(ColorBarSetting::ColorbarType)),this,SLOT(changeColorbar(ColorBarSetting::ColorbarType)));
 
 
 }
@@ -32,9 +33,9 @@ void SCustomPlot::Initial()
     yAxis->setSubTickLengthOut(5);
 
 //色标
-    QCPColorMap *colorMap = new QCPColorMap(xAxis, yAxis);
+    colorMap = new QCPColorMap(xAxis, yAxis);
     colorMap->data()->setRange(QCPRange(0, 7), QCPRange(0, 50));
-    QCPColorScale *colorScale = new QCPColorScale(this);
+    colorScale = new QCPColorScale(this);
     colorScale->setBarWidth(11);
     colorScale->setDataRange(QCPRange(0, 100));
 //    colorScale->axis()->setTickLabels(false);
@@ -58,7 +59,7 @@ void SCustomPlot::Initial()
     //gpHuge==ONDT_Corrosion
     //gpGrayscale == ONDT_RFTOFD
     //gpJet==ONDT_Amplitude
-    QCPColorGradient gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
+    gradient=QCPColorGradient::gpJet;  // 色条使用的颜色渐变
     colorMap->setGradient(gradient);
     // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
     colorMap->rescaleDataRange();
@@ -88,7 +89,31 @@ void SCustomPlot::Initial()
     rescaleAxes();//自适应大小
     replot();
 }
+void SCustomPlot::changeColorbar(ColorBarSetting::ColorbarType colorbartype)
+{
+    //设置色条的颜色变化
+    //gpHuge==ONDT_Corrosion
+    //gpGrayscale == ONDT_RFTOFD
+    //gpJet==ONDT_Amplitude
 
+
+    if(colorbartype==ColorBarSetting::ColorbarType::ONDT_Amplitude)
+    {
+        gradient=QCPColorGradient::gpJet;
+    }
+    else if(colorbartype==ColorBarSetting::ColorbarType::ONDT_Corrosion)
+    {
+        gradient=QCPColorGradient::gpHues;
+    }
+    else
+    {
+        gradient=QCPColorGradient::gpGrayscale;
+    }
+    colorMap->setGradient(gradient);
+    // rescale the data dimension (color) such that all data points lie in the span visualized by the color gradient:
+    colorMap->rescaleDataRange();
+    this->replot();
+}
 void SCustomPlot::updateY1Event(float y_val)
 {
     m_lineTracer1->updatePositionY(y_val);
